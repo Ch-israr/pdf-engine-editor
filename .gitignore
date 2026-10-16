@@ -1,0 +1,9 @@
+node_modules/
+dist/
+public/assets/pdfjs/
+public/assets/fonts/
+public/assets/standard_fonts/
+public/assets/cmaps/
+*.log
+.DS_Store
+test/out/
