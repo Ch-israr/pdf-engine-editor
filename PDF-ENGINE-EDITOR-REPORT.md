@@ -221,3 +221,32 @@ exists yet.
 - Arabic/Urdu editing: not enabled; the script gate is intact and
   E2E-verified in the shipped UI.
 - Nothing in this project was deployed anywhere.
+
+## 9. Post-deployment record + reset-semantics fix (2026-10-16)
+
+- GitHub: Ch-israr/pdf-engine-editor created by the owner (public); the 25
+  text files were pushed via the GitHub connector and blob-verified. The
+  connector cannot transfer binaries byte-exact (probed both write tools),
+  so the remaining 19 files (10 engine fonts, 8 fixture PDFs,
+  package-lock.json) were uploaded through GitHub's web UI in three commits
+  (5189ae4, c203640, 101c98a) and blob-SHA-verified 19/19 against the local
+  tree. The repository is complete: 44/44 tracked files.
+- Render: Static Site "pdf-engine-editor" (srv-db8vfbnavr4c73cgn4o0),
+  GitHub-provider connection, auto-deploy on. The first deploy failed with
+  the expected ENOENT on engine/assets (fonts not yet present); the deploy
+  triggered by the completion commits succeeded. Live:
+  https://pdf-engine-editor.onrender.com
+- Live functional test (real browser, writer.pdf): load (zero console
+  errors), open, mapping 30 editable / 19 not-safely-editable, BROWN→RED
+  via fallback-font, exported-copy preview showing RED — 6/7 steps passed.
+  Step 7 exposed a defect the local E2E had not covered: after "Open
+  exported copy", the exported document became the session's "original",
+  so "Reset to original" reported success while staying on the edited
+  export; the first-opened file was unrecoverable in-session.
+- Fix (src/App.tsx): the session now pins originalName/originalBytes at
+  open time; reopenExported no longer overwrites them; Reset restores the
+  pinned file (name included) and both actions' status messages name the
+  file Reset returns to. test/e2e.cjs gained the exact live-found sequence
+  as regression steps (edit → open exported copy → reset must restore
+  writer.pdf with BROWN). Suites after the fix: integration 34/34,
+  E2E 18/18 + independent export verification, zero console errors.

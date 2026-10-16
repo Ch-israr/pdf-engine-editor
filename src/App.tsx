@@ -14,6 +14,11 @@ const MAX_FILE_BYTES = 50 * 1024 * 1024;
 
 interface Session {
   name: string;
+  // The file the user opened first in this session. These two fields are
+  // pinned at open time and NEVER reassigned afterwards — in particular,
+  // opening the exported copy must not replace them, so "Reset to original"
+  // always returns to the file the user actually opened.
+  originalName: string;
   originalBytes: Uint8Array;
   currentBytes: Uint8Array;
   edits: string[];
@@ -177,7 +182,7 @@ export default function App() {
       return;
     }
     const bytes = new Uint8Array(await file.arrayBuffer());
-    setSession({ name: file.name, originalBytes: bytes, currentBytes: bytes, edits: [] });
+    setSession({ name: file.name, originalName: file.name, originalBytes: bytes, currentBytes: bytes, edits: [] });
     setReplacement('');
     say('info', `Opened ${file.name} (${(file.size / 1024).toFixed(0)} KB). Processing is entirely local — nothing is uploaded.`);
     await loadIntoViewer(bytes);
@@ -284,16 +289,19 @@ export default function App() {
 
   const reset = useCallback(async () => {
     if (!session) return;
-    setSession({ ...session, currentBytes: session.originalBytes, edits: [] });
-    say('info', 'Reset to the original file. All edits were discarded.');
+    setSession({ ...session, name: session.originalName, currentBytes: session.originalBytes, edits: [] });
+    say('info', `Reset to ${session.originalName} — the file you opened first. All edits were discarded.`);
     await loadIntoViewer(session.originalBytes);
   }, [loadIntoViewer, say, session]);
 
   const reopenExported = useCallback(async () => {
     if (!session) return;
     const bytes = session.currentBytes;
-    setSession({ name: session.name.replace(/\.pdf$/i, '') + '-edited.pdf', originalBytes: bytes, currentBytes: bytes, edits: [] });
-    say('info', 'The exported copy is now the open document (it is the new original for this session).');
+    // The exported copy becomes the open document, but the session's pinned
+    // original (originalName/originalBytes) is deliberately left untouched:
+    // Reset must always be able to return to the file the user opened first.
+    setSession({ ...session, name: session.name.replace(/\.pdf$/i, '') + '-edited.pdf', currentBytes: bytes, edits: [] });
+    say('info', `The exported copy is now the open document. “Reset to original” still returns to ${session.originalName}, the file you opened first.`);
     await loadIntoViewer(bytes);
   }, [loadIntoViewer, say, session]);
 

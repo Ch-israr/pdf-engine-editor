@@ -2,8 +2,10 @@
 // Serves dist/ under https://editor.local/ via CDP Fetch interception
 // (sandbox loopback is blocked by Local Network Access policy), drives
 // the real UI in headless Chromium, and asserts: upload -> select ->
-// edit -> preview, download byte capture, Arabic refusal, reset, zero
-// console errors, and zero network requests outside the app origin.
+// edit -> preview, download byte capture, Arabic refusal, reset —
+// including reset AFTER opening the exported copy, which must still
+// return to the first-opened file — zero console errors, and zero
+// network requests outside the app origin.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -185,9 +187,39 @@ function getJson(p) {
 
   // Reset restores the original.
   await ev(`[...document.querySelectorAll('button')].find(b => b.textContent.includes('Reset to original')).click()`);
-  await waitFor(`document.querySelector('[data-testid="status"]')?.textContent.includes('Reset to the original')`, 'reset status');
+  await waitFor(`document.querySelector('[data-testid="status"]')?.textContent.includes('Reset to writer.pdf')`, 'reset status');
   await waitFor(`[...document.querySelectorAll('.textLayer span')].some(s => s.textContent === 'BROWN')`, 'BROWN back after reset');
   check('reset restores the original document', true);
+
+  // Regression (found in live testing 2026-10-16): opening the exported
+  // copy must NOT replace the session's original. After edit -> open
+  // exported copy -> reset, the app must return to writer.pdf with BROWN,
+  // not stay on the exported RED document.
+  check('re-select BROWN for the export/reset sequence', await selectSpan('BROWN'));
+  await waitFor(`document.querySelector('[data-testid="replacement"]')?.value === 'BROWN'`, 'panel refilled (2nd edit)');
+  await setReplacement('RED');
+  await ev(`document.querySelector('[data-testid="apply"]').click()`);
+  await waitFor(`document.querySelector('[data-testid="status"]')?.textContent.includes('Edited via fallback-font')`, 'second edit applied');
+  await ev(`[...document.querySelectorAll('button')].find(b => b.textContent.includes('Open exported copy')).click()`);
+  await waitFor(`document.querySelector('[data-testid="status"]')?.textContent.includes('exported copy is now the open document')`, 'export opened status');
+  check('opening the export announces the pinned reset target',
+    await ev(`document.querySelector('[data-testid="status"]')?.textContent.includes('still returns to writer.pdf')`));
+  try {
+    await waitFor(`document.querySelector('.file-name')?.textContent.includes('writer-edited.pdf')`, 'header shows the exported name', 30000);
+    await waitFor(`[...document.querySelectorAll('.textLayer span')].some(s => s.textContent === 'RED')`, 'RED visible in the exported doc', 30000);
+  } catch (e) {
+    console.log('FILE-NAME:', await ev(`document.querySelector('.file-name')?.textContent`));
+    console.log('SPANS:', await ev(`[...document.querySelectorAll('.textLayer span')].slice(0, 10).map(s => JSON.stringify(s.textContent)).join(' | ')`));
+    console.log('STATUS:', await ev(`document.querySelector('[data-testid="status"]')?.textContent.slice(0, 200)`));
+    throw e;
+  }
+  check('exported copy is the open document (header + RED visible)', true);
+  await ev(`[...document.querySelectorAll('button')].find(b => b.textContent.includes('Reset to original')).click()`);
+  await waitFor(`document.querySelector('[data-testid="status"]')?.textContent.includes('Reset to writer.pdf')`, 'reset-after-export status');
+  await waitFor(`[...document.querySelectorAll('.textLayer span')].some(s => s.textContent === 'BROWN')`, 'BROWN back after reset-after-export');
+  check('reset after opening the export restores the first-opened file',
+    await ev(`document.querySelector('.file-name')?.textContent.trim() === 'writer.pdf'`) &&
+    await ev(`![...document.querySelectorAll('.textLayer span')].some(s => s.textContent === 'RED')`));
 
   // Arabic replacement must refuse and change nothing.
   check('re-select BROWN after reset', await selectSpan('BROWN'));
