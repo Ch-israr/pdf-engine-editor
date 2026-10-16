@@ -62,3 +62,30 @@ html, body { margin: 0; padding: 0; font-family: "Segoe UI", system-ui, -apple-s
   .panel { width: auto; max-height: none; border-left: 0; border-top: 1px solid #d4d7dc; }
   .viewer { max-height: none; }
 }
+
+/* --- Toolbar groups, mode pill, zoom cluster (Phase A) --- */
+.mode-pill { display: flex; background: #26292f; border: 1px solid #3a3e46; border-radius: 999px; padding: 2px; gap: 2px; }
+.mode-pill button { background: transparent; color: #c9cdd4; border: 0; border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
+.mode-pill button[aria-pressed="true"] { background: #2563eb; color: #fff; }
+.tb-group { display: flex; gap: 6px; }
+.tb-group button, .zoom-cluster button { background: #26292f; color: #eee; border: 1px solid #3a3e46; border-radius: 5px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+.tb-group button:disabled, .zoom-cluster button:disabled { color: #6f757f; cursor: default; }
+.zoom-cluster { display: flex; align-items: center; gap: 6px; }
+.zoom-cluster select { background: #26292f; color: #eee; border: 1px solid #3a3e46; border-radius: 5px; padding: 5px 6px; font-size: 13px; }
+.zoom-cluster button[aria-pressed="true"] { background: #2563eb; border-color: #2563eb; color: #fff; }
+.page-input { width: 44px; background: #26292f; color: #eee; border: 1px solid #3a3e46; border-radius: 5px; padding: 5px 6px; font-size: 13px; text-align: center; }
+.page-input:disabled { color: #6f757f; }
+
+/* --- Hand mode --- */
+.viewer.hand { cursor: grab; }
+.viewer.hand.hand-dragging { cursor: grabbing; }
+.viewer.hand .textLayer { pointer-events: none; }
+
+/* --- Inline editor overlay (Phase B) --- */
+.inline-edit { position: absolute; z-index: 6; transform-origin: left center; display: flex; flex-direction: column; gap: 3px; }
+.inline-input { background: rgba(255,255,255,.97); border: 2px solid #2563eb; border-radius: 4px; padding: 1px 5px; color: #111; outline: none; box-shadow: 0 4px 16px rgba(0,0,0,.35); line-height: 1.25; }
+.inline-edit.inline-refused .inline-input { border-color: #dc2626; }
+.inline-edit.inline-attention .inline-input { border-color: #d97706; }
+.inline-meta { font: 11.5px "Segoe UI", system-ui, sans-serif; color: #e5e7eb; background: rgba(23,25,29,.88); border-radius: 4px; padding: 2px 7px; white-space: nowrap; align-self: flex-start; }
+.inline-meta.inline-meta-warn { background: rgba(120,53,15,.92); color: #fde68a; }
+.inline-error { font: 12px "Segoe UI", system-ui, sans-serif; color: #fecaca; background: rgba(127,29,29,.94); border-radius: 4px; padding: 4px 8px; max-width: 430px; line-height: 1.45; }

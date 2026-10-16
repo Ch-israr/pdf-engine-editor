@@ -6,7 +6,7 @@
 //   3. Any failure returns the document untouched, with a reason.
 import { PDFDocument, PDFFont, PDFName, degrees, rgb } from 'pdf-lib';
 import * as fontkit2 from 'fontkit2'; // v2.0.4 — engine-side font reading (wider cmap support)
-import { extractPage, type TextRun } from './extract.js';
+import { extractPage, type PageData, type TextRun } from './extract.js';
 import { encodeWithFont, stripSubsetPrefix, type FontInfo } from './fonts.js';
 import { phaseScriptAllowed } from './winansi.js';
 
@@ -292,4 +292,67 @@ export async function replaceRunText(pdfBytes: Uint8Array, req: EditRequest): Pr
     detail: `original font ${info.baseName} (${info.subtype}) cannot write the replacement; removed the run and redrew it with an embedded ${(engineConfig.subsetFallbackFont ?? true) ? 'subset' : 'copy'} of ${fb.font.familyName} (${kind}) at the original position, size, colour${Math.abs(run.angleDeg) >= 0.5 ? ` and rotation (${run.angleDeg.toFixed(1)}°)` : ''}; width ${widthBefore.toFixed(1)}pt -> ${widthAfter.toFixed(1)}pt`,
     bytes: await doc.save(),
   };
+}
+
+// --- Read-only width measurement (Phase 10) ---------------------------------
+// Added for the editor's inline-editing width warning. This function is
+// strictly read-only: it loads nothing, saves nothing, and changes no
+// editing behaviour. It mirrors replaceRunText's gate order and its width
+// instruments exactly, so the estimate it returns is the same number the
+// real edit reports in its outcome detail — or null where the real edit
+// itself could not measure (e.g. a same-font replacement whose codes the
+// font's /Widths table does not cover).
+export interface ReplacementMeasure {
+  path: 'same-font' | 'fallback-font' | 'refused';
+  reason?: string;
+  widthBeforePt: number | null;
+  widthAfterPt: number | null;
+}
+
+export async function measureReplacement(
+  pageData: PageData, run: TextRun, replacement: string,
+): Promise<ReplacementMeasure> {
+  const info = pageData.fonts.get(run.fontResource)!;
+  if (run.operator === "'" || run.operator === '"') {
+    return { path: 'refused', reason: 'operator-unsupported', widthBeforePt: null, widthAfterPt: null };
+  }
+  if (!run.mappable) {
+    return { path: 'refused', reason: 'font-not-mappable', widthBeforePt: null, widthAfterPt: null };
+  }
+  const gate = phaseScriptAllowed(replacement);
+  if (!gate.ok) {
+    return { path: 'refused', reason: 'script-not-supported-in-this-phase', widthBeforePt: null, widthAfterPt: null };
+  }
+  const kind = fallbackKindFor(info.baseName);
+  const fb = await fallbackFont(kind);
+  const layoutFont = fb.font as EngineFont & { unitsPerEm: number; layout: (s: string) => { glyphs: { advanceWidth: number }[] } };
+  const layoutWidth = (s: string) => layoutFont.layout(s).glyphs.reduce((a, g) => a + g.advanceWidth, 0) / layoutFont.unitsPerEm * run.fontSize;
+  // Width of the current run: the font's own /Widths when complete (the
+  // same instrument Path B prefers), else the fallback-layout estimate.
+  const widthsComplete = run.codes.every((code) => info.widths.has(code));
+  const widthBeforePt = widthsComplete
+    ? run.codes.reduce((a, code) => a + info.widths.get(code)!, 0) / 1000 * run.fontSize
+    : layoutWidth(run.text);
+
+  const encoded = encodeWithFont(info, replacement);
+  if (encoded && (await sameFontProven(info, replacement, pageData.runs))) {
+    const codes = info.isCID
+      ? Array.from({ length: Math.floor(encoded.length / 2) }, (_, i) => (encoded[i * 2] << 8) | encoded[i * 2 + 1])
+      : [...encoded];
+    // The file's /Widths is the only width instrument the engine has —
+    // Standard-14 glyph presence is definitional, but no definitional
+    // width table exists in the engine, so a replacement using codes the
+    // file's table omits is honestly reported as not measurable (null),
+    // exactly as the real edit reports such widths as not measurable.
+    const widthAfterPt = codes.every((c) => info.widths.has(c))
+      ? codes.reduce((a, c) => a + info.widths.get(c)!, 0) / 1000 * run.fontSize
+      : null;
+    return { path: 'same-font', widthBeforePt, widthAfterPt };
+  }
+  for (const ch of replacement) {
+    if (!fb.font.hasGlyphForCodePoint(ch.codePointAt(0)!)) {
+      return { path: 'refused', reason: 'glyph-not-covered', widthBeforePt, widthAfterPt: null };
+    }
+  }
+  return { path: 'fallback-font', widthBeforePt, widthAfterPt: layoutWidth(replacement) };
 }

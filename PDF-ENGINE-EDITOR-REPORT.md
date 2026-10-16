@@ -274,3 +274,108 @@ exists yet.
   BROWN restored after opening the exported copy. Lesson recorded: never
   verify connector-written files through the connector itself — always
   confirm via an independent channel.
+
+## 11. Toolbar, undo/redo, inline editing + Phase 10 engine snapshot (2026-10-16, LOCAL ONLY — not committed/pushed/deployed)
+
+Implemented under the user's approval of assessment Phases A, B and C
+(with the rotation/crop browser tests included in this stage). No Add
+Text; no other tools added.
+
+**Engine (condition: read-only helper only).** Upstream `engine-poc`
+gained two pure measurement functions (Phase 10, snapshot
+`snapshots/phase10-inline`, new suite `test/run-measure.ts` 24/24):
+`measureReplacement` in `src/replace.ts` and
+`measureFragmentReplacement` in `src/fragment.ts` (plus one internal
+refactor: the character→code boundary map is now a shared helper used by
+both the edit and the measure — the edit itself is byte-for-byte the
+same logic). They mirror the real edits' gates in the same order and
+report the engine's own measured numbers; a width is reported as
+unmeasurable (null) exactly where the engine has no definitional source
+(e.g. standard.pdf's Type1 Helvetica-Bold declares no /Widths at all —
+the helper says so instead of guessing). Upstream full battery green
+after the change (poc 8/8, verify.py, realworld 13 + atomicity,
+fragments 29/29, audit probes 18/18, tsc clean). The two files were
+re-vendored; the vendored tree verifies 17/17 SHA-256 against the
+phase10 manifest and ENGINE-NOTICE.md documents the change.
+`src/engine-adapter.ts` exposes the measures on already-extracted page
+data; integration T14 proves measure↔edit numeric parity (suite now
+40/40).
+
+**Phase A — toolbar, modes, history.** Top toolbar: Open + filename |
+Select/Edit Text/Hand modes (V/T/H) | Undo/Redo | pager with a
+page-number field and scroll-spy | zoom steps, Fit Width, Fit Page |
+Download, Reset. History: max 25 entries AND a 200 MB total retained
+budget across both stacks + current (byte states stored by reference,
+never mutated); the oldest entries drop first, at least one undo step
+always survives. An edit enters history ONLY after it applied AND the
+edited PDF reloaded successfully (extract + render + mapping); refusals,
+cancellations and failed reloads record nothing. Undo/redo restore the
+full coherence set (bytes, page, run mapping, selection cleared, editor
+state). Hand mode drag-scrolls with the text layer inert. The scroll-spy
+observes both the internal viewer scroll (wide layout) and the window
+scroll (narrow layout, where the page itself scrolls). Selections are
+ignored while a (re)load is in flight — spans and mapping briefly belong
+to different document states mid-load, and resolving then produced
+wrong-target/"not mappable" outcomes during testing.
+
+**Phase B — inline editor** (`src/inline-editor.ts`). Opens on the
+selection in Edit Text mode, or via Enter/F2/double-click in any
+non-Hand mode; anchored to the selected spans' rendered boxes (so it
+inherits zoom, rotation and crop), prefilled and styled like the text.
+Enter commits through the same `performEdit` path as the panel; Escape
+cancels with bytes untouched; a refusal keeps the editor open with the
+draft intact and the engine's verbatim reason; an unsubmitted (pristine)
+draft closes on blur, a changed draft never silently closes. The meta
+line shows the measured width change ("Width ≈ A pt → B pt (original
+font|fallback font)"), warns when the replacement grows into following
+text (no reflow), and predicts refusals (e.g. the script gate) before
+commit, using the Phase 10 measures.
+
+**Phase C — rotated/cropped, incl. one real bug found and fixed.** The
+app now handles /Rotate pages correctly in the viewer: PDF.js builds
+text-layer spans in the page's UNROTATED frame and expects the host to
+rotate the layer (its own viewer CSS does); this app never did, so on a
+/Rotate 90 page the visible canvas was rotated but the text layer —
+click targets, highlights, inline anchor — sat in unrotated positions.
+`loadIntoViewer` now applies the viewer's rotation transform to the
+layer (90/270: translate+rotate about origin; 180: rotate about center),
+and the inline editor anchors rotated text by its center with the
+overlay rotated to the text's display angle (E2E: editor center within
+~11px of the span center, vertical input). Cropped pages need no fix:
+the engine extracts both runs of the cropped fixture, PDF.js returns
+only the CropBox-visible item, the mapper maps the visible run and
+honestly reports the clipped run unmapped (shown in the status counts,
+not selectable).
+
+**Fit feedback-loop fix.** The ResizeObserver that keeps a fit active
+recomputed on transient layout states during zoom reloads (scrollbars
+vanish while the host is empty → viewer widens ~30px → corrupt fit
+scale → retrigger). It now skips recomputation while a load is in
+flight; verified stable at desktop size (1280×900): Fit Width = exactly
+(viewer − 48)px, Fit Page within the viewer height, scroll-spy follows
+the internal viewer scroll.
+
+**Verification (exact commands, this machine).** Upstream engine-poc:
+battery above, all green. Editor: `npm test` 40/40 integration;
+`npm run typecheck` clean; `npm run build` green; `npm run test:e2e`
+47/47 checks + EXPORT VERIFIED (independent re-parse of the downloaded
+PDF), three consecutive full passes of the final tree, zero console
+errors, zero off-origin requests. The 18 original checks are retained
+and pass; new coverage: refusal creates no history; undo/redo cycle and
+boundaries; redo cleared by a new edit; pager + scroll-spy; Fit Width
+and discrete zoom; inline success/refusal-stays-open/Escape; rotated
+panel + inline editing; cropped mapping + edit. Screenshots:
+`test/out/e2e-editor.png` (final state), `test/out/probe-rotated.png`
+(rotated inline editor on the text).
+
+**Known limitations.** Fragment inline anchoring estimates the
+fragment's sub-box proportionally along the run's long axis (exact for
+the common single-line, left-to-right cases; it is a position estimate,
+not a measurement). The inline width line is an estimate for same-font
+edits whose widths come from the file's /Widths (labelled "≈"); the
+engine's apply-time checks remain the authority and a commit can still
+be refused after a benign estimate. Very large files keep fewer undo
+steps under the 200 MB budget (disclosed in the footer). The E2E still
+runs in the sandbox's narrow headless window; the desktop layout was
+verified with a separate throwaway probe (deleted after use), not a
+standing suite. NOT committed, pushed or deployed — awaiting approval.

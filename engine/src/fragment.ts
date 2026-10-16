@@ -22,7 +22,7 @@ import { tokenize } from './content.js';
 import { phaseScriptAllowed } from './winansi.js';
 import {
   embedPreparedFallback, fallbackFont, fallbackKindFor, hexString,
-  replaceRunText, sameFontProven, spliceBytes, type EditOutcome,
+  measureReplacement, replaceRunText, sameFontProven, spliceBytes, type EditOutcome,
 } from './replace.js';
 
 export interface FragmentRequest {
@@ -196,18 +196,7 @@ export async function replaceFragmentInRun(pdfBytes: Uint8Array, req: FragmentRe
   // characters (e.g. a ligature code in ToUnicode); a range boundary may
   // not fall inside such a code.
   const info = pageData.fonts.get(run.fontResource)!;
-  const perCodeStr = run.codes.map((c) => info.toUnicode?.get(c) ?? info.codeToUnicode.get(c) ?? '');
-  const toCodePos = (charPos: number): number | null => {
-    if (charPos === run.text.length) return run.codes.length;
-    // boundary is valid only if it coincides with a code start
-    let acc = 0;
-    for (let ci = 0; ci < perCodeStr.length; ci++) {
-      if (acc === charPos) return ci;
-      acc += perCodeStr[ci].length;
-      if (acc > charPos) return null;
-    }
-    return acc === charPos ? perCodeStr.length : null;
-  };
+  const toCodePos = (charPos: number) => codePosForChar(run, info, charPos);
   const codeStart = toCodePos(req.start);
   const codeEnd = toCodePos(req.end);
   if (codeStart === null || codeEnd === null) {
@@ -364,4 +353,78 @@ export async function replaceFragmentInRun(pdfBytes: Uint8Array, req: FragmentRe
     detail: `fragment [${req.start}, ${req.end}) of run #${run.ordinal} replaced: prefix and suffix preserved in the original font ${info.baseName} (${info.subtype}) with the suffix at its exact original position; the fragment was redrawn with the embedded fallback font ${fb.font.familyName} (${kind}); fragment advance ${fragAdvance.toFixed(1)}pt -> replacement ${replAdvance.toFixed(1)}pt${Math.abs(run.angleDeg) >= 0.5 ? `; rotation ${run.angleDeg.toFixed(1)}° honoured` : ''}`,
     bytes: await doc.save(),
   };
+}
+
+// --- Shared boundary mapping + read-only measurement (Phase 10) --------------
+// codePosForChar is the exact boundary rule replaceFragmentInRun applies:
+// a character offset maps to a code offset only when it coincides with a
+// code start (a boundary inside a multi-character code, e.g. a ligature,
+// maps to null). Extracted unchanged so the read-only measure below and
+// the edit itself can never disagree about boundaries.
+function codePosForChar(run: TextRun, info: FontInfo, charPos: number): number | null {
+  if (charPos === run.text.length) return run.codes.length;
+  const perCodeStr = run.codes.map((c) => info.toUnicode?.get(c) ?? info.codeToUnicode.get(c) ?? '');
+  let acc = 0;
+  for (let ci = 0; ci < perCodeStr.length; ci++) {
+    if (acc === charPos) return ci;
+    acc += perCodeStr[ci].length;
+    if (acc > charPos) return null;
+  }
+  return acc === charPos ? perCodeStr.length : null;
+}
+
+export interface FragmentMeasure {
+  path: 'same-font' | 'fallback-font' | 'refused';
+  reason?: string;
+  fragAdvancePt: number | null;
+  replacementAdvancePt: number | null;
+}
+
+/** Read-only mirror of replaceFragmentInRun's gates and advance math, for
+ *  the editor's inline width warning. Loads nothing, saves nothing, and
+ *  changes no editing behaviour; advances are null exactly where the real
+ *  edit itself reports them as not measurable. */
+export async function measureFragmentReplacement(
+  pageData: PageData, run: TextRun, start: number, end: number, replacement: string,
+): Promise<FragmentMeasure> {
+  const refused = (reason: string): FragmentMeasure => ({ path: 'refused', reason, fragAdvancePt: null, replacementAdvancePt: null });
+  const info = pageData.fonts.get(run.fontResource)!;
+  if (!run.mappable) return refused('font-not-mappable');
+  if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end < start || end > run.text.length) {
+    return refused('fragment-range-invalid');
+  }
+  if (run.operator === "'" || run.operator === '"') return refused('fragment-operator-unsupported');
+  const codeStart = codePosForChar(run, info, start);
+  const codeEnd = codePosForChar(run, info, end);
+  if (codeStart === null || codeEnd === null) return refused('fragment-boundary-in-glyph');
+  if (codeStart === 0 && codeEnd === run.codes.length) {
+    const m = await measureReplacement(pageData, run, replacement);
+    return { path: m.path, reason: m.reason, fragAdvancePt: m.widthBeforePt, replacementAdvancePt: m.widthAfterPt };
+  }
+  const gate = phaseScriptAllowed(replacement);
+  if (!gate.ok) return refused('script-not-supported-in-this-phase');
+  const model = buildOperandModel(pageData, run);
+  if (!model) return refused('fragment-operand-mismatch');
+  const modelTotal = advanceUpTo(model, info, run, run.codes.length) + (-model.gapAt[run.codes.length] / 1000) * run.fontSize;
+  if (Math.abs(modelTotal - run.advancePt) > 0.75) return refused('fragment-operand-mismatch');
+  const fragAdvance = advanceUpTo(model, info, run, codeEnd) - advanceUpTo(model, info, run, codeStart);
+  const widthsComplete = info.isCID || run.codes.every((c) => info.widths.has(c));
+  const encoded = encodeWithFont(info, replacement);
+  if (encoded && (await sameFontProven(info, replacement, pageData.runs))) {
+    if (!widthsComplete) return { path: 'same-font', fragAdvancePt: null, replacementAdvancePt: null };
+    const replAdvance = [...encoded].reduce((a, c) => a + codeAdvance(info, run, c), 0);
+    return { path: 'same-font', fragAdvancePt: fragAdvance, replacementAdvancePt: replAdvance };
+  }
+  if (!widthsComplete) return refused('fragment-widths-unavailable');
+  if (run.hScale !== 100) return refused('fragment-layout-state-unsupported');
+  const kind = fallbackKindFor(info.baseName);
+  const fb = await fallbackFont(kind);
+  for (const ch of replacement) {
+    if (!fb.font.hasGlyphForCodePoint(ch.codePointAt(0)!)) return refused('glyph-not-covered');
+  }
+  const layoutFont = fb.font as typeof fb.font & { unitsPerEm: number; layout: (s: string) => { glyphs: { advanceWidth: number }[] } };
+  const replAdvance = replacement.length === 0
+    ? 0
+    : layoutFont.layout(replacement).glyphs.reduce((a, g) => a + g.advanceWidth, 0) / layoutFont.unitsPerEm * run.fontSize;
+  return { path: 'fallback-font', fragAdvancePt: fragAdvance, replacementAdvancePt: replAdvance };
 }

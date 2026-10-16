@@ -5,10 +5,14 @@
 // subset embedder cannot use fontkit 2.x). Engine decisions are identical
 // to the Node build; no document data ever leaves the browser.
 import * as fontkit2 from 'fontkit2';
-import { loadAndExtract, type PageData } from '../engine/src/extract';
-import { replaceFragmentInRun, type FragmentRequest } from '../engine/src/fragment';
+import { loadAndExtract, type PageData, type TextRun } from '../engine/src/extract';
 import {
-  configureEngine, FALLBACK_FILES, replaceRunText, type EditOutcome,
+  measureFragmentReplacement, replaceFragmentInRun,
+  type FragmentMeasure, type FragmentRequest,
+} from '../engine/src/fragment';
+import {
+  configureEngine, FALLBACK_FILES, measureReplacement, replaceRunText,
+  type EditOutcome, type ReplacementMeasure,
 } from '../engine/src/replace';
 
 let configured = false;
@@ -49,4 +53,17 @@ export async function applyFragment(bytes: Uint8Array, req: Omit<FragmentRequest
   return replaceFragmentInRun(bytes, req);
 }
 
-export type { EditOutcome, FragmentRequest, PageData };
+// Read-only width/path estimates for the inline editor's width warning.
+// They operate on the already-extracted page data (no document reload)
+// and mirror the engine's own gates and numbers; they never modify bytes.
+export async function measureWholeRun(pageData: PageData, run: TextRun, replacement: string): Promise<ReplacementMeasure> {
+  initEngine();
+  return measureReplacement(pageData, run, replacement);
+}
+
+export async function measureFragment(pageData: PageData, run: TextRun, start: number, end: number, replacement: string): Promise<FragmentMeasure> {
+  initEngine();
+  return measureFragmentReplacement(pageData, run, start, end, replacement);
+}
+
+export type { EditOutcome, FragmentMeasure, FragmentRequest, PageData, ReplacementMeasure, TextRun };

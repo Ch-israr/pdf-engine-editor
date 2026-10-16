@@ -7,8 +7,8 @@ import { readFile } from 'node:fs/promises';
 // @ts-ignore legacy build for Node-side text extraction
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { loadAndExtract } from '../engine/src/extract';
-import { replaceFragmentInRun } from '../engine/src/fragment';
-import { replaceRunText } from '../engine/src/replace';
+import { measureFragmentReplacement, replaceFragmentInRun } from '../engine/src/fragment';
+import { measureReplacement, replaceRunText } from '../engine/src/replace';
 import { mapRunsToItems, validateFragment, type ViewerItem } from '../src/selection-map';
 
 GlobalWorkerOptions.workerSrc = process.cwd() + '/node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs';
@@ -200,6 +200,37 @@ async function itemsOf(bytes: Uint8Array): Promise<ViewerItem[][]> {
   const names = ['standard.pdf', 'frag.pdf', 'writer.pdf', 'calc.pdf', 'rotated.pdf', 'quote.pdf', 'scanned.pdf', 'rotate90.pdf'];
   const hashes = await Promise.all(names.map(async (n) => sha(await load(n))));
   check('T13 fixture hashes recorded (mutation check is the before/after suite comparison)', hashes.every((h) => h.length === 64), names.join(','));
+}
+
+// T14: read-only measure helpers (phase10) — parity with the real edits,
+// refusal mirroring, and no byte mutation.
+{
+  const bytes = await load('writer.pdf');
+  const before = sha(bytes);
+  const { pages } = await loadAndExtract(bytes);
+  const brown = pages[0].runs.find((r) => r.text === 'BROWN')!;
+  const m = await measureReplacement(pages[0], brown, 'RED');
+  check('T14 whole-run measure predicts the fallback path', m.path === 'fallback-font', m.path);
+  const real = await replaceRunText(bytes, { pageIndex: 0, runOrdinal: brown.ordinal, matchText: 'BROWN', replacement: 'RED' });
+  const dm = real.ok ? /width ([\d.]+)pt -> ([\d.]+)pt/.exec(real.detail) : null;
+  check('T14 measure widths match the real edit detail',
+    !!dm && m.widthBeforePt !== null && m.widthAfterPt !== null &&
+    Math.abs(m.widthBeforePt - parseFloat(dm[1])) <= 0.15 && Math.abs(m.widthAfterPt - parseFloat(dm[2])) <= 0.15,
+    `${m.widthBeforePt}/${m.widthAfterPt} vs ${dm?.[1]}/${dm?.[2]}`);
+  const mf = await measureFragmentReplacement(pages[0], brown, 0, 4, 'RE');
+  const realF = await replaceFragmentInRun(bytes, { pageIndex: 0, runOrdinal: brown.ordinal, matchText: 'BROWN', start: 0, end: 4, replacement: 'RE' });
+  const df = realF.ok ? /fragment advance ([\d.]+)pt -> replacement ([\d.]+)pt/.exec(realF.detail) : null;
+  check('T14 fragment measure matches the real fragment advances',
+    mf.path === 'fallback-font' && !!df && mf.fragAdvancePt !== null && mf.replacementAdvancePt !== null &&
+    Math.abs(mf.fragAdvancePt - parseFloat(df[1])) <= 0.15 && Math.abs(mf.replacementAdvancePt - parseFloat(df[2])) <= 0.15,
+    `${mf.fragAdvancePt}/${mf.replacementAdvancePt} vs ${df?.[1]}/${df?.[2]}`);
+  const script = await measureReplacement(pages[0], brown, 'أحمر');
+  check('T14 measure mirrors the script-gate refusal', script.path === 'refused' && script.reason === 'script-not-supported-in-this-phase', `${script.path}/${script.reason ?? ''}`);
+  check('T14 measuring never modifies the document bytes', sha(bytes) === before);
+  const std = await loadAndExtract(await load('standard.pdf'));
+  const inv = std.pages[0].runs.find((r) => r.text === 'Invoice INV-2026-041')!;
+  const ms = await measureReplacement(std.pages[0], inv, 'Invoice INV-2026-042');
+  check('T14 same-font measure on the Tj fixture', ms.path === 'same-font', `${ms.path}/${ms.reason ?? ''}`);
 }
 
 console.log(`\n${passed}/${passed + failed} integration checks passed`);
