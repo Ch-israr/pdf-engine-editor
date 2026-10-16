@@ -1,1 +1,402 @@
-aW1wb3J0IHsgdXNlQ2FsbGJhY2ssIHVzZUVmZmVjdCwgdXNlUmVmLCB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JzsKaW1wb3J0IHsgZ2V0RG9jdW1lbnQsIEdsb2JhbFdvcmtlck9wdGlvbnMsIFRleHRMYXllciB9IGZyb20gJ3BkZmpzLWRpc3QnOwppbXBvcnQgdHlwZSB7IFBERkRvY3VtZW50UHJveHksIFBERlBhZ2VQcm94eSB9IGZyb20gJ3BkZmpzLWRpc3QnOwppbXBvcnQgewogIGFwcGx5RnJhZ21lbnQsIGFwcGx5V2hvbGVSdW4sIGV4dHJhY3REb2N1bWVudCwgdHlwZSBFZGl0T3V0Y29tZSwgdHlwZSBQYWdlRGF0YSwKfSBmcm9tICcuL2VuZ2luZS1hZGFwdGVyJzsKaW1wb3J0IHsKICBtYXBSdW5zVG9JdGVtcywgcmFuZ2VJblJ1biwgdmFsaWRhdGVGcmFnbWVudCwgdHlwZSBNYXBwZWRUYXJnZXQsIHR5cGUgTWFwcGluZ1Jlc3VsdCwgdHlwZSBWaWV3ZXJJdGVtLAp9IGZyb20gJy4vc2VsZWN0aW9uLW1hcCc7CgpHbG9iYWxXb3JrZXJPcHRpb25zLndvcmtlclNyYyA9ICdhc3NldHMvcGRmanMvcGRmLndvcmtlci5taW4ubWpzJzsKCmNvbnN0IE1BWF9GSUxFX0JZVEVTID0gNTAgKiAxMDI0ICogMTAyNDsKCmludGVyZmFjZSBTZXNzaW9uIHsKICBuYW1lOiBzdHJpbmc7CiAgLy8gVGhlIGZpbGUgdGhlIHVzZXIgb3BlbmVkIGZpcnN0IGluIHRoaXMgc2Vzc2lvbi4gVGhlc2UgdHdvIGZpZWxkcyBhcmUKICAvLyBwaW5uZWQgYXQgb3BlbiB0aW1lIGFuZCBORVZFUiByZWFzc2lnbmVkIGFmdGVyd2FyZHMg4oCUIGluIHBhcnRpY3VsYXIsCiAgLy8gb3BlbmluZyB0aGUgZXhwb3J0ZWQgY29weSBtdXN0IG5vdCByZXBsYWNlIHRoZW0sIHNvICJSZXNldCB0byBvcmlnaW5hbCIKICAvLyBhbHdheXMgcmV0dXJucyB0byB0aGUgZmlsZSB0aGUgdXNlciBhY3R1YWxseSBvcGVuZWQuCiAgb3JpZ2luYWxOYW1lOiBzdHJpbmc7CiAgb3JpZ2luYWxCeXRlczogVWludDhBcnJheTsKICBjdXJyZW50Qnl0ZXM6IFVpbnQ4QXJyYXk7CiAgZWRpdHM6IHN0cmluZ1tdOwp9CgppbnRlcmZhY2UgU2VsZWN0aW9uU3RhdGUgewogIHRhcmdldDogTWFwcGVkVGFyZ2V0OwogIG1vZGU6ICd3aG9sZS1ydW4nIHwgJ2ZyYWdtZW50JzsKICBmcmFnbWVudD86IHsgc3RhcnQ6IG51bWJlcjsgZW5kOiBudW1iZXI7IHRleHQ6IHN0cmluZyB9Owp9CgppbnRlcmZhY2UgU3RhdHVzRW50cnkgeyBraW5kOiAnb2snIHwgJ2Vycm9yJyB8ICdpbmZvJzsgdGV4dDogc3RyaW5nIH0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIEFwcCgpIHsKICBjb25zdCBbc2Vzc2lvbiwgc2V0U2Vzc2lvbl0gPSB1c2VTdGF0ZTxTZXNzaW9uIHwgbnVsbD4obnVsbCk7CiAgY29uc3QgW2VuZ2luZVBhZ2VzLCBzZXRFbmdpbmVQYWdlc10gPSB1c2VTdGF0ZTxQYWdlRGF0YVtdPihbXSk7CiAgY29uc3QgW21hcHBpbmcsIHNldE1hcHBpbmddID0gdXNlU3RhdGU8TWFwcGluZ1Jlc3VsdD4oeyB0YXJnZXRzOiBbXSwgdW5tYXBwZWQ6IFtdIH0pOwogIGNvbnN0IFtzZWxlY3Rpb24sIHNldFNlbGVjdGlvbl0gPSB1c2VTdGF0ZTxTZWxlY3Rpb25TdGF0ZSB8IG51bGw+KG51bGwpOwogIGNvbnN0IFtyZXBsYWNlbWVudCwgc2V0UmVwbGFjZW1lbnRdID0gdXNlU3RhdGUoJycpOwogIGNvbnN0IFtzdGF0dXMsIHNldFN0YXR1c10gPSB1c2VTdGF0ZTxTdGF0dXNFbnRyeVtdPihbXSk7CiAgY29uc3QgW3NjYWxlLCBzZXRTY2FsZV0gPSB1c2VTdGF0ZSgxLjI1KTsKICBjb25zdCBbcGFnZU5vdywgc2V0UGFnZU5vd10gPSB1c2VTdGF0ZSgxKTsKICBjb25zdCBbcGFnZUNvdW50LCBzZXRQYWdlQ291bnRdID0gdXNlU3RhdGUoMCk7CiAgY29uc3QgW2J1c3ksIHNldEJ1c3ldID0gdXNlU3RhdGUoZmFsc2UpOwoKICBjb25zdCBwZGZEb2NSZWYgPSB1c2VSZWY8UERGRG9jdW1lbnRQcm94eSB8IG51bGw+KG51bGwpOwogIGNvbnN0IHBhZ2VzSG9zdFJlZiA9IHVzZVJlZjxIVE1MRGl2RWxlbWVudD4obnVsbCk7CiAgY29uc3QgcmVuZGVyR2VuUmVmID0gdXNlUmVmKDApOwogIGNvbnN0IGl0ZW1zUmVmID0gdXNlUmVmPFZpZXdlckl0ZW1bXVtdPihbXSk7CiAgLy8gS2V5IG9mIHRoZSBzZWxlY3Rpb24gdGhlIHBhbmVsIGN1cnJlbnRseSByZWZsZWN0cy4gQnJvd3NlcnMgZGVsaXZlcgogIC8vIHNlbGVjdGlvbmNoYW5nZSBhc3luY2hyb25vdXNseSAoYW5kIHNvbWV0aW1lcyByZXBlYXRlZGx5KTsgYSByZXBlYXQKICAvLyBkZWxpdmVyeSBmb3IgdGhlIFNBTUUgc2VsZWN0aW9uIG11c3Qgbm90IGNsb2JiZXIgdGV4dCB0aGUgdXNlciBoYXMKICAvLyBhbHJlYWR5IHR5cGVkIGludG8gdGhlIHJlcGxhY2VtZW50IGJveC4KICBjb25zdCBzZWxLZXlSZWYgPSB1c2VSZWYoJycpOwoKICBjb25zdCBzYXkgPSB1c2VDYWxsYmFjaygoa2luZDogU3RhdHVzRW50cnlbJ2tpbmQnXSwgdGV4dDogc3RyaW5nKSA9PiB7CiAgICBzZXRTdGF0dXMoKHMpID0+IFt7IGtpbmQsIHRleHQgfSwgLi4uc10uc2xpY2UoMCwgMzApKTsKICB9LCBbXSk7CgogIGNvbnN0IGRlc3Ryb3lQZGYgPSB1c2VDYWxsYmFjayhhc3luYyAoKSA9PiB7CiAgICBpZiAocGRmRG9jUmVmLmN1cnJlbnQpIHsKICAgICAgY29uc3QgZG9jID0gcGRmRG9jUmVmLmN1cnJlbnQ7CiAgICAgIHBkZkRvY1JlZi5jdXJyZW50ID0gbnVsbDsKICAgICAgLy8gTmV2ZXIgbGV0IGEgc3R1Y2sgZGVzdHJveSBzdGFsbCB0aGUgbmV4dCBkb2N1bWVudDogcmFjZSBpdCBhbmQKICAgICAgLy8gYWJhbmRvbiB0aGUgb2xkIGRvY3VtZW50IGlmIHRoZSB3b3JrZXIgZG9lcyBub3QgYW5zd2VyIHByb21wdGx5CiAgICAgIC8vICh0aGUgZ2VuZXJhdGlvbiBjb3VudGVyIGFscmVhZHkga2VlcHMgc3RhbGUgcmVuZGVycyBvdXQpLgogICAgICB0cnkgewogICAgICAgIGF3YWl0IFByb21pc2UucmFjZShbCiAgICAgICAgICBkb2MuZGVzdHJveSgpLAogICAgICAgICAgbmV3IFByb21pc2UoKHIpID0+IHNldFRpbWVvdXQociwgMjAwMCkpLAogICAgICAgIF0pOwogICAgICB9IGNhdGNoIHsgLyogYWxyZWFkeSBnb25lICovIH0KICAgIH0KICB9LCBbXSk7CgogIC8qKiAoUmUpYnVpbGQgdGhlIHZpZXdlciArIGVuZ2luZSBleHRyYWN0aW9uICsgbWFwcGluZyBmb3IgYSBieXRlIHN0YXRlLiAqLwogIGNvbnN0IGxvYWRJbnRvVmlld2VyID0gdXNlQ2FsbGJhY2soYXN5bmMgKGJ5dGVzOiBVaW50OEFycmF5KSA9PiB7CiAgICBjb25zdCBnZW4gPSArK3JlbmRlckdlblJlZi5jdXJyZW50OwogICAgYXdhaXQgZGVzdHJveVBkZigpOwogICAgY29uc3QgaG9zdCA9IHBhZ2VzSG9zdFJlZi5jdXJyZW50OwogICAgaWYgKGhvc3QpIGhvc3QuaW5uZXJIVE1MID0gJyc7CiAgICBzZXRTZWxlY3Rpb24obnVsbCk7CiAgICBzZWxLZXlSZWYuY3VycmVudCA9ICcnOwoKICAgIGNvbnN0IGV4dHJhY3RlZCA9IGF3YWl0IGV4dHJhY3REb2N1bWVudChieXRlcy5zbGljZSgpKTsKICAgIGlmIChnZW4gIT09IHJlbmRlckdlblJlZi5jdXJyZW50KSByZXR1cm47CiAgICBzZXRFbmdpbmVQYWdlcyhleHRyYWN0ZWQucGFnZXMpOwoKICAgIGNvbnN0IGRvYyA9IGF3YWl0IGdldERvY3VtZW50KHsKICAgICAgZGF0YTogYnl0ZXMuc2xpY2UoKSwKICAgICAgc3RhbmRhcmRGb250RGF0YVVybDogJ2Fzc2V0cy9zdGFuZGFyZF9mb250cy8nLAogICAgICBjTWFwVXJsOiAnYXNzZXRzL2NtYXBzLycsCiAgICAgIGNNYXBQYWNrZWQ6IHRydWUsCiAgICB9KS5wcm9taXNlOwogICAgaWYgKGdlbiAhPT0gcmVuZGVyR2VuUmVmLmN1cnJlbnQpIHsgYXdhaXQgZG9jLmRlc3Ryb3koKTsgcmV0dXJuOyB9CiAgICBwZGZEb2NSZWYuY3VycmVudCA9IGRvYzsKICAgIHNldFBhZ2VDb3VudChkb2MubnVtUGFnZXMpOwogICAgc2V0UGFnZU5vdygxKTsKICAgIGlmICghaG9zdCkgcmV0dXJuOwoKICAgIGNvbnN0IGl0ZW1zQnlQYWdlOiBWaWV3ZXJJdGVtW11bXSA9IFtdOwogICAgZm9yIChsZXQgcCA9IDE7IHAgPD0gZG9jLm51bVBhZ2VzOyBwKyspIHsKICAgICAgY29uc3QgcGFnZTogUERGUGFnZVByb3h5ID0gYXdhaXQgZG9jLmdldFBhZ2UocCk7CiAgICAgIGNvbnN0IHZpZXdwb3J0ID0gcGFnZS5nZXRWaWV3cG9ydCh7IHNjYWxlIH0pOwogICAgICBjb25zdCB3cmFwID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7CiAgICAgIHdyYXAuY2xhc3NOYW1lID0gJ3BhZ2Utd3JhcCc7CiAgICAgIHdyYXAuZGF0YXNldC5wYWdlID0gU3RyaW5nKHApOwogICAgICB3cmFwLnN0eWxlLndpZHRoID0gYCR7dmlld3BvcnQud2lkdGh9cHhgOwogICAgICB3cmFwLnN0eWxlLmhlaWdodCA9IGAke3ZpZXdwb3J0LmhlaWdodH1weGA7CiAgICAgIGNvbnN0IGNhbnZhcyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2NhbnZhcycpOwogICAgICBjYW52YXMud2lkdGggPSBNYXRoLmZsb29yKHZpZXdwb3J0LndpZHRoICogZGV2aWNlUGl4ZWxSYXRpbyk7CiAgICAgIGNhbnZhcy5oZWlnaHQgPSBNYXRoLmZsb29yKHZpZXdwb3J0LmhlaWdodCAqIGRldmljZVBpeGVsUmF0aW8pOwogICAgICBjYW52YXMuc3R5bGUud2lkdGggPSBgJHt2aWV3cG9ydC53aWR0aH1weGA7CiAgICAgIGNhbnZhcy5zdHlsZS5oZWlnaHQgPSBgJHt2aWV3cG9ydC5oZWlnaHR9cHhgOwogICAgICB3cmFwLmFwcGVuZENoaWxkKGNhbnZhcyk7CiAgICAgIGNvbnN0IGN0eCA9IGNhbnZhcy5nZXRDb250ZXh0KCcyZCcpITsKICAgICAgY3R4LnNjYWxlKGRldmljZVBpeGVsUmF0aW8sIGRldmljZVBpeGVsUmF0aW8pOwogICAgICAvLyBBIHBhZ2UncyBjYW52YXMgcmVuZGVyIG11c3QgbmV2ZXIgYmxvY2sgdGhlIHRleHQgbGF5ZXIvbWFwcGluZzoKICAgICAgLy8gc29tZSBlbnZpcm9ubWVudHMgbGVhdmUgdGhlIHJlbmRlciBwcm9taXNlIHVuc2V0dGxlZCBldmVuIHdoaWxlCiAgICAgIC8vIHBhaW50aW5nIGNvbXBsZXRlcy4gUmFjZSBpdCBhbmQgY29udGludWUgaG9uZXN0bHkgb24gdGltZW91dC4KICAgICAgY29uc3QgcmVuZGVyVGFzayA9IHBhZ2UucmVuZGVyKHsgY2FudmFzQ29udGV4dDogY3R4LCB2aWV3cG9ydCB9KTsKICAgICAgY29uc3Qgc2V0dGxlZCA9IGF3YWl0IFByb21pc2UucmFjZShbCiAgICAgICAgcmVuZGVyVGFzay5wcm9taXNlLnRoZW4oKCkgPT4gJ2RvbmUnKS5jYXRjaCgoKSA9PiAnZXJyb3InKSwKICAgICAgICBuZXcgUHJvbWlzZTxzdHJpbmc+KChyKSA9PiBzZXRUaW1lb3V0KCgpID0+IHIoJ3RpbWVvdXQnKSwgNjAwMCkpLAogICAgICBdKTsKICAgICAgaWYgKHNldHRsZWQgPT09ICd0aW1lb3V0JykgewogICAgICAgIHJlbmRlclRhc2suY2FuY2VsKCk7CiAgICAgICAgc2F5KCdpbmZvJywgYFBhZ2UgJHtwfTogdGhlIGNhbnZhcyByZW5kZXIgZGlkIG5vdCBzZXR0bGUgd2l0aGluIDZzIGluIHRoaXMgYnJvd3NlciDigJQgdGhlIHBhZ2UgaW1hZ2UgbWF5IHN0aWxsIGFwcGVhciwgYW5kIHRleHQgc2VsZWN0aW9uL2VkaXRpbmcgaXMgdW5hZmZlY3RlZC5gKTsKICAgICAgfQogICAgICBpZiAoZ2VuICE9PSByZW5kZXJHZW5SZWYuY3VycmVudCkgcmV0dXJuOwoKICAgICAgLy8gU2FtZSByZXNpbGllbmNlIGZvciB0aGUgdGV4dCBsYXllcjogYSBwYWdlIHdob3NlIHRleHQgbGF5ZXIgY2Fubm90CiAgICAgIC8vIGJlIGJ1aWx0IGluIHRpbWUgaXMgc2hvd24gYnV0IGl0cyBydW5zIHN0YXkgdW5zZWxlY3RhYmxlLCB3aXRoIHRoZQogICAgICAvLyByZWFzb24gcmVwb3J0ZWQg4oCUIHRoZSBkb2N1bWVudCBhcyBhIHdob2xlIG5ldmVyIHN0YWxscy4KICAgICAgY29uc3QgdGV4dENvbnRlbnQgPSBhd2FpdCBQcm9taXNlLnJhY2UoWwogICAgICAgIHBhZ2UuZ2V0VGV4dENvbnRlbnQoKS5jYXRjaCgoKSA9PiBudWxsKSwKICAgICAgICBuZXcgUHJvbWlzZTxudWxsPigocikgPT4gc2V0VGltZW91dCgoKSA9PiByKG51bGwpLCAxNTAwMCkpLAogICAgICBdKTsKICAgICAgaWYgKCF0ZXh0Q29udGVudCkgewogICAgICAgIHNheSgnZXJyb3InLCBgUGFnZSAke3B9OiB0aGUgdGV4dCBsYXllciBkaWQgbm90IGJ1aWxkIGluIHRoaXMgYnJvd3Nlciwgc28gdGhpcyBwYWdlJ3MgdGV4dCBjYW5ub3QgYmUgc2VsZWN0ZWQgc2FmZWx5LiBPdGhlciBwYWdlcyBhcmUgdW5hZmZlY3RlZC5gKTsKICAgICAgICBpdGVtc0J5UGFnZVtwIC0gMV0gPSBbXTsKICAgICAgICBob3N0LmFwcGVuZENoaWxkKHdyYXApOwogICAgICAgIGNvbnRpbnVlOwogICAgICB9CiAgICAgIGNvbnN0IGxheWVyRGl2ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7CiAgICAgIGxheWVyRGl2LmNsYXNzTmFtZSA9ICd0ZXh0TGF5ZXInOwogICAgICBsYXllckRpdi5zdHlsZS5zZXRQcm9wZXJ0eSgnLS1zY2FsZS1mYWN0b3InLCBTdHJpbmcoc2NhbGUpKTsKICAgICAgd3JhcC5hcHBlbmRDaGlsZChsYXllckRpdik7CiAgICAgIGNvbnN0IGxheWVyID0gbmV3IFRleHRMYXllcih7IHRleHRDb250ZW50U291cmNlOiB0ZXh0Q29udGVudCwgY29udGFpbmVyOiBsYXllckRpdiwgdmlld3BvcnQgfSk7CiAgICAgIGF3YWl0IFByb21pc2UucmFjZShbCiAgICAgICAgbGF5ZXIucmVuZGVyKCkuY2F0Y2goKCkgPT4ge30pLAogICAgICAgIG5ldyBQcm9taXNlPHZvaWQ+KChyKSA9PiBzZXRUaW1lb3V0KHIsIDE1MDAwKSksCiAgICAgIF0pOwogICAgICBsYXllci50ZXh0RGl2cy5mb3JFYWNoKChkaXYsIGkpID0+IHsKICAgICAgICBkaXYuZGF0YXNldC5wYWdlID0gU3RyaW5nKHAgLSAxKTsKICAgICAgICBkaXYuZGF0YXNldC5pdGVtID0gU3RyaW5nKGkpOwogICAgICB9KTsKICAgICAgaXRlbXNCeVBhZ2VbcCAtIDFdID0gdGV4dENvbnRlbnQuaXRlbXMKICAgICAgICAuZmlsdGVyKChpdCk6IGl0IGlzIEV4dHJhY3Q8dHlwZW9mIGl0LCB7IHN0cjogc3RyaW5nIH0+ID0+ICdzdHInIGluIGl0KQogICAgICAgIC5tYXAoKGl0LCBpKSA9PiAoewogICAgICAgICAgcGFnZUluZGV4OiBwIC0gMSwgaXRlbUluZGV4OiBpLCBzdHI6IGl0LnN0ciwgeDogaXQudHJhbnNmb3JtWzRdLCB5OiBpdC50cmFuc2Zvcm1bNV0sIHdpZHRoOiBpdC53aWR0aCwKICAgICAgICB9KSk7CiAgICAgIGhvc3QuYXBwZW5kQ2hpbGQod3JhcCk7CiAgICB9CiAgICBpZiAoZ2VuICE9PSByZW5kZXJHZW5SZWYuY3VycmVudCkgcmV0dXJuOwogICAgaXRlbXNSZWYuY3VycmVudCA9IGl0ZW1zQnlQYWdlOwogICAgY29uc3QgcmVzdWx0ID0gbWFwUnVuc1RvSXRlbXMoZXh0cmFjdGVkLnBhZ2VzLCBpdGVtc0J5UGFnZSk7CiAgICBzZXRNYXBwaW5nKHJlc3VsdCk7CiAgICBzYXkoJ2luZm8nLCBgTWFwcGVkICR7cmVzdWx0LnRhcmdldHMubGVuZ3RofSBlZGl0YWJsZSBydW4ocyk7ICR7cmVzdWx0LnVubWFwcGVkLmxlbmd0aH0gcnVuKHMpIGNhbm5vdCBiZSBtYXBwZWQgc2FmZWx5IGFuZCBhcmUgbm90IHNlbGVjdGFibGUuYCk7CiAgfSwgW2Rlc3Ryb3lQZGYsIHNjYWxlLCBzYXldKTsKCiAgLy8gUmUtcmVuZGVyIGF0IGEgbmV3IHpvb20gKGtlZXBzIHRoZSBzYW1lIGJ5dGVzIGFuZCBlZGl0IGhpc3RvcnkpLgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoc2Vzc2lvbikgdm9pZCBsb2FkSW50b1ZpZXdlcihzZXNzaW9uLmN1cnJlbnRCeXRlcyk7CiAgICAvLyBlc2xpbnQtZGlzYWJsZS1uZXh0LWxpbmUgcmVhY3QtaG9va3MvZXhoYXVzdGl2ZS1kZXBzCiAgfSwgW3NjYWxlXSk7CgogIGNvbnN0IG9wZW5GaWxlID0gdXNlQ2FsbGJhY2soYXN5bmMgKGZpbGU6IEZpbGUpID0+IHsKICAgIGlmIChmaWxlLnNpemUgPiBNQVhfRklMRV9CWVRFUykgewogICAgICBzYXkoJ2Vycm9yJywgYEZpbGUgaXMgJHsoZmlsZS5zaXplIC8gMTA0ODU3NikudG9GaXhlZCgxKX0gTUIg4oCUIHRoZSBpbi1icm93c2VyIGxpbWl0IGZvciB0aGlzIGVkaXRvciBpcyA1MCBNQi5gKTsKICAgICAgcmV0dXJuOwogICAgfQogICAgY29uc3QgYnl0ZXMgPSBuZXcgVWludDhBcnJheShhd2FpdCBmaWxlLmFycmF5QnVmZmVyKCkpOwogICAgc2V0U2Vzc2lvbih7IG5hbWU6IGZpbGUubmFtZSwgb3JpZ2luYWxOYW1lOiBmaWxlLm5hbWUsIG9yaWdpbmFsQnl0ZXM6IGJ5dGVzLCBjdXJyZW50Qnl0ZXM6IGJ5dGVzLCBlZGl0czogW10gfSk7CiAgICBzZXRSZXBsYWNlbWVudCgnJyk7CiAgICBzYXkoJ2luZm8nLCBgT3BlbmVkICR7ZmlsZS5uYW1lfSAoJHsoZmlsZS5zaXplIC8gMTAyNCkudG9GaXhlZCgwKX0gS0IpLiBQcm9jZXNzaW5nIGlzIGVudGlyZWx5IGxvY2FsIOKAlCBub3RoaW5nIGlzIHVwbG9hZGVkLmApOwogICAgYXdhaXQgbG9hZEludG9WaWV3ZXIoYnl0ZXMpOwogIH0sIFtsb2FkSW50b1ZpZXdlciwgc2F5XSk7CgogIC8vIFNlbGVjdGlvbiDihpIgdmFsaWRhdGVkIHRhcmdldC4gUnVucyBvbiBldmVyeSBzZWxlY3Rpb24gY2hhbmdlLgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBjb25zdCBvblNlbCA9ICgpID0+IHsKICAgICAgY29uc3Qgc2VsID0gd2luZG93LmdldFNlbGVjdGlvbigpOwogICAgICBpZiAoIXNlbCB8fCBzZWwucmFuZ2VDb3VudCA9PT0gMCkgcmV0dXJuOwogICAgICBjb25zdCBhbmNob3JEaXYgPSAoc2VsLmFuY2hvck5vZGU/LnBhcmVudEVsZW1lbnQ/LmNsb3Nlc3Q/LignW2RhdGEtaXRlbV0nKSA/PyBudWxsKSBhcyBIVE1MRWxlbWVudCB8IG51bGw7CiAgICAgIGNvbnN0IGZvY3VzRGl2ID0gKHNlbC5mb2N1c05vZGU/LnBhcmVudEVsZW1lbnQ/LmNsb3Nlc3Q/LignW2RhdGEtaXRlbV0nKSA/PyBudWxsKSBhcyBIVE1MRWxlbWVudCB8IG51bGw7CiAgICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy50ZXh0TGF5ZXIgLnJ1bi1zZWxlY3RlZCcpLmZvckVhY2goKGVsKSA9PiBlbC5jbGFzc0xpc3QucmVtb3ZlKCdydW4tc2VsZWN0ZWQnKSk7CiAgICAgIGlmICghYW5jaG9yRGl2IHx8ICFmb2N1c0RpdikgcmV0dXJuOwogICAgICBpZiAoYW5jaG9yRGl2LmRhdGFzZXQucGFnZSAhPT0gZm9jdXNEaXYuZGF0YXNldC5wYWdlKSB7CiAgICAgICAgc2F5KCdlcnJvcicsICdUaGF0IHNlbGVjdGlvbiBzcGFucyBtb3JlIHRoYW4gb25lIHBhZ2UuIFNlbGVjdCB0ZXh0IGluc2lkZSBhIHNpbmdsZSBydW4g4oCUIGNyb3NzLXJ1biBlZGl0aW5nIGlzIG5vdCBzdXBwb3J0ZWQuJyk7CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIGNvbnN0IHBhZ2VJbmRleCA9IE51bWJlcihhbmNob3JEaXYuZGF0YXNldC5wYWdlKTsKICAgICAgY29uc3QgYUl0ZW0gPSBOdW1iZXIoYW5jaG9yRGl2LmRhdGFzZXQuaXRlbSk7CiAgICAgIGNvbnN0IGZJdGVtID0gTnVtYmVyKGZvY3VzRGl2LmRhdGFzZXQuaXRlbSk7CiAgICAgIGNvbnN0IHRhcmdldCA9IG1hcHBpbmcudGFyZ2V0cy5maW5kKCh0KSA9PiB0LnBhZ2VJbmRleCA9PT0gcGFnZUluZGV4ICYmIHQuaXRlbUluZGljZXMuaW5jbHVkZXMoYUl0ZW0pKTsKICAgICAgaWYgKCF0YXJnZXQpIHsKICAgICAgICBzYXkoJ2Vycm9yJywgJ1RoYXQgdGV4dCBpcyBub3Qgc2FmZWx5IG1hcHBhYmxlIHRvIGFuIGVuZ2luZSB0ZXh0IHJ1biwgc28gaXQgY2Fubm90IGJlIGVkaXRlZC4nKTsKICAgICAgICByZXR1cm47CiAgICAgIH0KICAgICAgaWYgKCF0YXJnZXQuaXRlbUluZGljZXMuaW5jbHVkZXMoZkl0ZW0pKSB7CiAgICAgICAgc2F5KCdlcnJvcicsICdUaGF0IHNlbGVjdGlvbiBzcGFucyBtb3JlIHRoYW4gb25lIHRleHQgcnVuLiBTZWxlY3QgdGV4dCBpbnNpZGUgYSBzaW5nbGUgcnVuIOKAlCBjcm9zcy1ydW4gZWRpdGluZyBpcyBub3Qgc3VwcG9ydGVkLicpOwogICAgICAgIHJldHVybjsKICAgICAgfQogICAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGAudGV4dExheWVyIFtkYXRhLXBhZ2U9IiR7cGFnZUluZGV4fSJdYCkuZm9yRWFjaCgoZWwpID0+IHsKICAgICAgICBpZiAodGFyZ2V0Lml0ZW1JbmRpY2VzLmluY2x1ZGVzKE51bWJlcigoZWwgYXMgSFRNTEVsZW1lbnQpLmRhdGFzZXQuaXRlbSkpKSBlbC5jbGFzc0xpc3QuYWRkKCdydW4tc2VsZWN0ZWQnKTsKICAgICAgfSk7CiAgICAgIGlmIChzZWwuaXNDb2xsYXBzZWQpIHsKICAgICAgICBjb25zdCBrZXkgPSBgJHt0YXJnZXQucGFnZUluZGV4fToke3RhcmdldC5ydW5PcmRpbmFsfTp3aG9sZWA7CiAgICAgICAgc2V0U2VsZWN0aW9uKHsgdGFyZ2V0LCBtb2RlOiAnd2hvbGUtcnVuJyB9KTsKICAgICAgICBpZiAoc2VsS2V5UmVmLmN1cnJlbnQgIT09IGtleSkgeyBzZWxLZXlSZWYuY3VycmVudCA9IGtleTsgc2V0UmVwbGFjZW1lbnQodGFyZ2V0LnJ1blRleHQpOyB9CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIGNvbnN0IHNlbFRleHQgPSBzZWwudG9TdHJpbmcoKTsKICAgICAgY29uc3QgcmFuZ2UgPSByYW5nZUluUnVuKHRhcmdldCwgaXRlbXNSZWYuY3VycmVudFtwYWdlSW5kZXhdID8/IFtdLCBhSXRlbSwgc2VsLmFuY2hvck9mZnNldCwgZkl0ZW0sIHNlbC5mb2N1c09mZnNldCk7CiAgICAgIGNvbnN0IHYgPSB2YWxpZGF0ZUZyYWdtZW50KHRhcmdldCwgcmFuZ2Uuc3RhcnQsIHJhbmdlLmVuZCwgc2VsVGV4dCk7CiAgICAgIGlmICghdi5vaykgewogICAgICAgIHNheSgnZXJyb3InLCBgRnJhZ21lbnQgc2VsZWN0aW9uIHJlZnVzZWQ6ICR7di5yZWFzb259LmApOwogICAgICAgIHNldFNlbGVjdGlvbih7IHRhcmdldCwgbW9kZTogJ3dob2xlLXJ1bicgfSk7CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIGNvbnN0IGtleSA9IGAke3RhcmdldC5wYWdlSW5kZXh9OiR7dGFyZ2V0LnJ1bk9yZGluYWx9OmZyYWc6JHt2LnJhbmdlLnN0YXJ0fS0ke3YucmFuZ2UuZW5kfWA7CiAgICAgIHNldFNlbGVjdGlvbih7IHRhcmdldCwgbW9kZTogJ2ZyYWdtZW50JywgZnJhZ21lbnQ6IHsgc3RhcnQ6IHYucmFuZ2Uuc3RhcnQsIGVuZDogdi5yYW5nZS5lbmQsIHRleHQ6IHNlbFRleHQgfSB9KTsKICAgICAgaWYgKHNlbEtleVJlZi5jdXJyZW50ICE9PSBrZXkpIHsgc2VsS2V5UmVmLmN1cnJlbnQgPSBrZXk7IHNldFJlcGxhY2VtZW50KHNlbFRleHQpOyB9CiAgICB9OwogICAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignc2VsZWN0aW9uY2hhbmdlJywgb25TZWwpOwogICAgcmV0dXJuICgpID0+IGRvY3VtZW50LnJlbW92ZUV2ZW50TGlzdGVuZXIoJ3NlbGVjdGlvbmNoYW5nZScsIG9uU2VsKTsKICB9LCBbbWFwcGluZywgc2F5XSk7CgogIGNvbnN0IGFwcGx5RWRpdCA9IHVzZUNhbGxiYWNrKGFzeW5jICgpID0+IHsKICAgIGlmICghc2Vzc2lvbiB8fCAhc2VsZWN0aW9uIHx8IGJ1c3kpIHJldHVybjsKICAgIHNldEJ1c3kodHJ1ZSk7CiAgICBjb25zdCB7IHRhcmdldCwgbW9kZSwgZnJhZ21lbnQgfSA9IHNlbGVjdGlvbjsKICAgIGxldCBvdXQ6IEVkaXRPdXRjb21lOwogICAgdHJ5IHsKICAgICAgb3V0ID0gbW9kZSA9PT0gJ3dob2xlLXJ1bicKICAgICAgICA/IGF3YWl0IGFwcGx5V2hvbGVSdW4oc2Vzc2lvbi5jdXJyZW50Qnl0ZXMsIHRhcmdldC5wYWdlSW5kZXgsIHRhcmdldC5ydW5PcmRpbmFsLCB0YXJnZXQucnVuVGV4dCwgcmVwbGFjZW1lbnQpCiAgICAgICAgOiBhd2FpdCBhcHBseUZyYWdtZW50KHNlc3Npb24uY3VycmVudEJ5dGVzLCB7CiAgICAgICAgICBwYWdlSW5kZXg6IHRhcmdldC5wYWdlSW5kZXgsIHJ1bk9yZGluYWw6IHRhcmdldC5ydW5PcmRpbmFsLCBtYXRjaFRleHQ6IHRhcmdldC5ydW5UZXh0LAogICAgICAgICAgc3RhcnQ6IGZyYWdtZW50IS5zdGFydCwgZW5kOiBmcmFnbWVudCEuZW5kLCByZXBsYWNlbWVudCwKICAgICAgICB9KTsKICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgc2F5KCdlcnJvcicsIGBFZGl0IGZhaWxlZCB1bmV4cGVjdGVkbHk6ICR7ZSBpbnN0YW5jZW9mIEVycm9yID8gZS5tZXNzYWdlIDogU3RyaW5nKGUpfWApOwogICAgICBzZXRCdXN5KGZhbHNlKTsKICAgICAgcmV0dXJuOwogICAgfQogICAgaWYgKCFvdXQub2spIHsKICAgICAgc2F5KCdlcnJvcicsIGBFZGl0IHJlZnVzZWQgKCR7b3V0LnJlYXNvbn0pOiAke291dC5kZXRhaWx9IOKAlCB0aGUgZG9jdW1lbnQgd2FzIG5vdCBjaGFuZ2VkLmApOwogICAgICBzZXRCdXN5KGZhbHNlKTsKICAgICAgcmV0dXJuOwogICAgfQogICAgY29uc3QgbmV4dDogU2Vzc2lvbiA9IHsKICAgICAgLi4uc2Vzc2lvbiwKICAgICAgY3VycmVudEJ5dGVzOiBvdXQuYnl0ZXMhLAogICAgICBlZGl0czogWy4uLnNlc3Npb24uZWRpdHMsIGAke21vZGUgPT09ICd3aG9sZS1ydW4nID8gJ1J1bicgOiAnRnJhZ21lbnQnfSBwJHt0YXJnZXQucGFnZUluZGV4ICsgMX0jJHt0YXJnZXQucnVuT3JkaW5hbH06ICR7SlNPTi5zdHJpbmdpZnkobW9kZSA9PT0gJ3dob2xlLXJ1bicgPyB0YXJnZXQucnVuVGV4dCA6IGZyYWdtZW50IS50ZXh0KX0g4oaSICR7SlNPTi5zdHJpbmdpZnkocmVwbGFjZW1lbnQpfSAoJHtvdXQucGF0aH0pYF0sCiAgICB9OwogICAgc2V0U2Vzc2lvbihuZXh0KTsKICAgIHNheSgnb2snLCBgRWRpdGVkIHZpYSAke291dC5wYXRofS4gJHtvdXQuZGV0YWlsfWApOwogICAgdHJ5IHsKICAgICAgYXdhaXQgbG9hZEludG9WaWV3ZXIob3V0LmJ5dGVzISk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIHNheSgnZXJyb3InLCBgVGhlIGVkaXQgd2FzIGFwcGxpZWQgYnV0IHRoZSBwcmV2aWV3IGZhaWxlZCB0byByZWxvYWQ6ICR7ZSBpbnN0YW5jZW9mIEVycm9yID8gZS5tZXNzYWdlIDogU3RyaW5nKGUpfSDigJQgdXNlIERvd25sb2FkIHRvIGdldCB0aGUgZWRpdGVkIGZpbGUsIG9yIFJlc2V0LmApOwogICAgfQogICAgc2V0QnVzeShmYWxzZSk7CiAgfSwgW2J1c3ksIGxvYWRJbnRvVmlld2VyLCByZXBsYWNlbWVudCwgc2F5LCBzZWxlY3Rpb24sIHNlc3Npb25dKTsKCiAgY29uc3QgZG93bmxvYWQgPSB1c2VDYWxsYmFjaygoKSA9PiB7CiAgICBpZiAoIXNlc3Npb24pIHJldHVybjsKICAgIGNvbnN0IGJsb2IgPSBuZXcgQmxvYihbc2Vzc2lvbi5jdXJyZW50Qnl0ZXMuc2xpY2UoKS5idWZmZXIgYXMgQXJyYXlCdWZmZXJdLCB7IHR5cGU6ICdhcHBsaWNhdGlvbi9wZGYnIH0pOwogICAgY29uc3QgdXJsID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKTsKICAgIGNvbnN0IGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdhJyk7CiAgICBhLmhyZWYgPSB1cmw7CiAgICBhLmRvd25sb2FkID0gc2Vzc2lvbi5uYW1lLnJlcGxhY2UoL1wucGRmJC9pLCAnJykgKyAnLWVkaXRlZC5wZGYnOwogICAgYS5jbGljaygpOwogICAgc2V0VGltZW91dCgoKSA9PiBVUkwucmV2b2tlT2JqZWN0VVJMKHVybCksIDQwMDApOwogICAgc2F5KCdvaycsICdEb3dubG9hZGVkIHRoZSBlZGl0ZWQgUERGLiBZb3UgY2FuIHJlb3BlbiBpdCBoZXJlIHdpdGgg4oCcT3BlbiBleHBvcnRlZCBjb3B54oCdLicpOwogIH0sIFtzYXksIHNlc3Npb25dKTsKCiAgY29uc3QgcmVzZXQgPSB1c2VDYWxsYmFjayhhc3luYyAoKSA9PiB7CiAgICBpZiAoIXNlc3Npb24pIHJldHVybjsKICAgIHNldFNlc3Npb24oeyAuLi5zZXNzaW9uLCBuYW1lOiBzZXNzaW9uLm9yaWdpbmFsTmFtZSwgY3VycmVudEJ5dGVzOiBzZXNzaW9uLm9yaWdpbmFsQnl0ZXMsIGVkaXRzOiBbXSB9KTsKICAgIHNheSgnaW5mbycsIGBSZXNldCB0byAke3Nlc3Npb24ub3JpZ2luYWxOYW1lfSDigJQgdGhlIGZpbGUgeW91IG9wZW5lZCBmaXJzdC4gQWxsIGVkaXRzIHdlcmUgZGlzY2FyZGVkLmApOwogICAgYXdhaXQgbG9hZEludG9WaWV3ZXIoc2Vzc2lvbi5vcmlnaW5hbEJ5dGVzKTsKICB9LCBbbG9hZEludG9WaWV3ZXIsIHNheSwgc2Vzc2lvbl0pOwoKICBjb25zdCByZW9wZW5FeHBvcnRlZCA9IHVzZUNhbGxiYWNrKGFzeW5jICgpID0+IHsKICAgIGlmICghc2Vzc2lvbikgcmV0dXJuOwogICAgY29uc3QgYnl0ZXMgPSBzZXNzaW9uLmN1cnJlbnRCeXRlczsKICAgIC8vIFRoZSBleHBvcnRlZCBjb3B5IGJlY29tZXMgdGhlIG9wZW4gZG9jdW1lbnQsIGJ1dCB0aGUgc2Vzc2lvbidzIHBpbm5lZAogICAgLy8gb3JpZ2luYWwgKG9yaWdpbmFsTmFtZS9vcmlnaW5hbEJ5dGVzKSBpcyBkZWxpYmVyYXRlbHkgbGVmdCB1bnRvdWNoZWQ6CiAgICAvLyBSZXNldCBtdXN0IGFsd2F5cyBiZSBhYmxlIHRvIHJldHVybiB0byB0aGUgZmlsZSB0aGUgdXNlciBvcGVuZWQgZmlyc3QuCiAgICBzZXRTZXNzaW9uKHsgLi4uc2Vzc2lvbiwgbmFtZTogc2Vzc2lvbi5uYW1lLnJlcGxhY2UoL1wucGRmJC9pLCAnJykgKyAnLWVkaXRlZC5wZGYnLCBjdXJyZW50Qnl0ZXM6IGJ5dGVzLCBlZGl0czogW10gfSk7CiAgICBzYXkoJ2luZm8nLCBgVGhlIGV4cG9ydGVkIGNvcHkgaXMgbm93IHRoZSBvcGVuIGRvY3VtZW50LiDigJxSZXNldCB0byBvcmlnaW5hbOKAnSBzdGlsbCByZXR1cm5zIHRvICR7c2Vzc2lvbi5vcmlnaW5hbE5hbWV9LCB0aGUgZmlsZSB5b3Ugb3BlbmVkIGZpcnN0LmApOwogICAgYXdhaXQgbG9hZEludG9WaWV3ZXIoYnl0ZXMpOwogIH0sIFtsb2FkSW50b1ZpZXdlciwgc2F5LCBzZXNzaW9uXSk7CgogIGNvbnN0IGdvdG9QYWdlID0gKHA6IG51bWJlcikgPT4gewogICAgY29uc3QgaG9zdCA9IHBhZ2VzSG9zdFJlZi5jdXJyZW50OwogICAgY29uc3QgZWwgPSBob3N0Py5xdWVyeVNlbGVjdG9yKGAucGFnZS13cmFwW2RhdGEtcGFnZT0iJHtwfSJdYCk7CiAgICBlbD8uc2Nyb2xsSW50b1ZpZXcoeyBiZWhhdmlvcjogJ3Ntb290aCcsIGJsb2NrOiAnc3RhcnQnIH0pOwogICAgc2V0UGFnZU5vdyhwKTsKICB9OwoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImFwcCI+CiAgICAgIDxoZWFkZXIgY2xhc3NOYW1lPSJ0b29sYmFyIj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYnJhbmQiPlBERiBFbmdpbmUgRWRpdG9yPC9kaXY+CiAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT0ib3Blbi1idG4iPgogICAgICAgICAgT3BlbiBQREYKICAgICAgICAgIDxpbnB1dCB0eXBlPSJmaWxlIiBhY2NlcHQ9ImFwcGxpY2F0aW9uL3BkZiwucGRmIiBjbGFzc05hbWU9InZpc3VhbGx5LWhpZGRlbiIgYXJpYS1sYWJlbD0iT3BlbiBhIFBERiBmaWxlIiBvbkNoYW5nZT17KGUpID0+IHsKICAgICAgICAgICAgY29uc3QgZiA9IGUudGFyZ2V0LmZpbGVzPy5bMF07CiAgICAgICAgICAgIGlmIChmKSB2b2lkIG9wZW5GaWxlKGYpOwogICAgICAgICAgICBlLnRhcmdldC52YWx1ZSA9ICcnOwogICAgICAgICAgfX0gLz4KICAgICAgICA8L2xhYmVsPgogICAgICAgIDxzcGFuIGNsYXNzTmFtZT0iZmlsZS1uYW1lIj57c2Vzc2lvbiA/IHNlc3Npb24ubmFtZSA6ICdObyBmaWxlIG9wZW4nfTwvc3Bhbj4KICAgICAgICA8c3BhbiBjbGFzc05hbWU9InNwYWNlciIgLz4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0icGFnZXIiPgogICAgICAgICAgPGJ1dHRvbiBkaXNhYmxlZD17IXNlc3Npb24gfHwgcGFnZU5vdyA8PSAxfSBvbkNsaWNrPXsoKSA9PiBnb3RvUGFnZShwYWdlTm93IC0gMSl9PuKAuSBQcmV2PC9idXR0b24+CiAgICAgICAgICA8c3Bhbj57c2Vzc2lvbiA/IGBQYWdlICR7cGFnZU5vd30gLyAke3BhZ2VDb3VudH1gIDogJ+KAlCd9PC9zcGFuPgogICAgICAgICAgPGJ1dHRvbiBkaXNhYmxlZD17IXNlc3Npb24gfHwgcGFnZU5vdyA+PSBwYWdlQ291bnR9IG9uQ2xpY2s9eygpID0+IGdvdG9QYWdlKHBhZ2VOb3cgKyAxKX0+TmV4dCDigLo8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJ6b29tIj5ab29tCiAgICAgICAgICA8c2VsZWN0IHZhbHVlPXtzY2FsZX0gb25DaGFuZ2U9eyhlKSA9PiBzZXRTY2FsZShOdW1iZXIoZS50YXJnZXQudmFsdWUpKX0+CiAgICAgICAgICAgIHtbMC43NSwgMSwgMS4yNSwgMS41LCAyXS5tYXAoKHopID0+IDxvcHRpb24ga2V5PXt6fSB2YWx1ZT17en0+e01hdGgucm91bmQoeiAqIDEwMCl9JTwvb3B0aW9uPil9CiAgICAgICAgICA8L3NlbGVjdD4KICAgICAgICA8L2xhYmVsPgogICAgICA8L2hlYWRlcj4KCiAgICAgIDxkaXYgY2xhc3NOYW1lPSJtYWluIj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idmlld2VyIj4KICAgICAgICAgIHsvKiBwYWdlc0hvc3QgaXMgbWFuYWdlZCBpbXBlcmF0aXZlbHkgKGNhbnZhcyArIHRleHQgbGF5ZXJzKTsKICAgICAgICAgICAgICBSZWFjdCBtdXN0IG5ldmVyIHJlbmRlciBjaGlsZHJlbiBpbnRvIGl0LiAqL30KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJwYWdlcy1ob3N0IiByZWY9e3BhZ2VzSG9zdFJlZn0gZGF0YS10ZXN0aWQ9InZpZXdlciIgLz4KICAgICAgICAgIHshc2Vzc2lvbiAmJiAoCiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJlbXB0eSI+CiAgICAgICAgICAgICAgPGgxPkVkaXQgUERGIHRleHQsIGVudGlyZWx5IGluIHlvdXIgYnJvd3NlcjwvaDE+CiAgICAgICAgICAgICAgPHA+T3BlbiBhIFBERiB0byBiZWdpbi4gWW91ciBmaWxlIGlzIHByb2Nlc3NlZCBsb2NhbGx5IG9uIHRoaXMgZGV2aWNlIOKAlCBpdCBpcyBuZXZlciB1cGxvYWRlZCwgYW5kIHRoaXMgYXBwIGhhcyBubyBiYWNrZW5kLCBubyBhY2NvdW50cywgYW5kIG5vIHRyYWNraW5nLjwvcD4KICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9ImxpbWl0cyI+U3VwcG9ydGVkOiByZXBsYWNpbmcgZXhpc3RpbmcgdGV4dCBydW5zIChvciBhIGZyYWdtZW50IG9mIGEgcnVuKSBpbiBMYXRpbi1zY3JpcHQgZG9jdW1lbnRzIHdoZW4gdGhlIGVuZ2luZSBjYW4gcHJvdmUgdGhlIGVkaXQgaXMgc2FmZS4gQXJhYmljL1VyZHUgZWRpdGluZywgY3Jvc3MtcnVuIHNlbGVjdGlvbnMsIGFuZCBzY2FubmVkL2ltYWdlLW9ubHkgcGFnZXMgYXJlIHJlZnVzZWQgd2l0aCBhbiBleHBsYW5hdGlvbiDigJQgbmV2ZXIgc2lsZW50bHkgZmFrZWQuPC9wPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICl9CiAgICAgICAgPC9kaXY+CgogICAgICAgIDxhc2lkZSBjbGFzc05hbWU9InBhbmVsIj4KICAgICAgICAgIDxoMj5TZWxlY3Rpb24gJmFtcDsgZWRpdDwvaDI+CiAgICAgICAgICB7IXNlbGVjdGlvbiAmJiA8cCBjbGFzc05hbWU9ImhpbnQiPkNsaWNrIHRleHQgaW4gdGhlIGRvY3VtZW50IHRvIHNlbGVjdCBpdHMgcnVuLCBvciBkcmFnIGFjcm9zcyBwYXJ0IG9mIGEgcnVuIHRvIGVkaXQganVzdCB0aGF0IGZyYWdtZW50LiBPbmx5IHRleHQgdGhhdCBtYXBzIGV4YWN0bHkgdG8gYW4gZW5naW5lIHJ1biBjYW4gYmUgc2VsZWN0ZWQuPC9wPn0KICAgICAgICAgIHtzZWxlY3Rpb24gJiYgKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ic2VsLWluZm8iPgogICAgICAgICAgICAgIDxkaXY+PHN0cm9uZz5QYWdlPC9zdHJvbmc+IHtzZWxlY3Rpb24udGFyZ2V0LnBhZ2VJbmRleCArIDF9IMK3IDxzdHJvbmc+cnVuPC9zdHJvbmc+ICN7c2VsZWN0aW9uLnRhcmdldC5ydW5PcmRpbmFsfSDCtyA8c3Ryb25nPm9wZXJhdG9yPC9zdHJvbmc+IHtzZWxlY3Rpb24udGFyZ2V0Lm9wZXJhdG9yfTwvZGl2PgogICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJzZWwtdGV4dCI+e3NlbGVjdGlvbi5tb2RlID09PSAnd2hvbGUtcnVuJyA/IHNlbGVjdGlvbi50YXJnZXQucnVuVGV4dCA6IGBGcmFnbWVudDogJHtKU09OLnN0cmluZ2lmeShzZWxlY3Rpb24uZnJhZ21lbnQhLnRleHQpfSBvZiAke0pTT04uc3RyaW5naWZ5KHNlbGVjdGlvbi50YXJnZXQucnVuVGV4dCl9YH08L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibW9kZS1yb3ciPgogICAgICAgICAgICAgICAgPGxhYmVsPjxpbnB1dCB0eXBlPSJyYWRpbyIgY2hlY2tlZD17c2VsZWN0aW9uLm1vZGUgPT09ICd3aG9sZS1ydW4nfSBvbkNoYW5nZT17KCkgPT4gc2V0U2VsZWN0aW9uKHsgdGFyZ2V0OiBzZWxlY3Rpb24udGFyZ2V0LCBtb2RlOiAnd2hvbGUtcnVuJyB9KX0gLz4gV2hvbGUgcnVuPC9sYWJlbD4KICAgICAgICAgICAgICAgIDxsYWJlbD48aW5wdXQgdHlwZT0icmFkaW8iIGNoZWNrZWQ9e3NlbGVjdGlvbi5tb2RlID09PSAnZnJhZ21lbnQnfSBkaXNhYmxlZD17IXNlbGVjdGlvbi5mcmFnbWVudCAmJiBzZWxlY3Rpb24ubW9kZSAhPT0gJ2ZyYWdtZW50J30gb25DaGFuZ2U9eygpID0+IHNlbGVjdGlvbi5mcmFnbWVudCAmJiBzZXRTZWxlY3Rpb24oeyAuLi5zZWxlY3Rpb24sIG1vZGU6ICdmcmFnbWVudCcgfSl9IC8+IEZyYWdtZW50IChkcmFnLXNlbGVjdCBwYXJ0IG9mIHRoZSBydW4pPC9sYWJlbD4KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPSJyZXBsLWxhYmVsIj5SZXBsYWNlbWVudCB0ZXh0CiAgICAgICAgICAgICAgICA8aW5wdXQgZGF0YS10ZXN0aWQ9InJlcGxhY2VtZW50IiB2YWx1ZT17cmVwbGFjZW1lbnR9IG9uQ2hhbmdlPXsoZSkgPT4gc2V0UmVwbGFjZW1lbnQoZS50YXJnZXQudmFsdWUpfSAvPgogICAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImFwcGx5IiBkYXRhLXRlc3RpZD0iYXBwbHkiIGRpc2FibGVkPXtidXN5fSBvbkNsaWNrPXsoKSA9PiB2b2lkIGFwcGx5RWRpdCgpfT57YnVzeSA/ICdBcHBseWluZ+KApicgOiAnQXBwbHkgZWRpdCd9PC9idXR0b24+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKX0KCiAgICAgICAgICA8aDI+RG9jdW1lbnQ8L2gyPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImRvYy1hY3Rpb25zIj4KICAgICAgICAgICAgPGJ1dHRvbiBkYXRhLXRlc3RpZD0iZG93bmxvYWQiIGRpc2FibGVkPXshc2Vzc2lvbiB8fCBzZXNzaW9uLmVkaXRzLmxlbmd0aCA9PT0gMH0gb25DbGljaz17ZG93bmxvYWR9PkRvd25sb2FkIGVkaXRlZCBQREY8L2J1dHRvbj4KICAgICAgICAgICAgPGJ1dHRvbiBkaXNhYmxlZD17IXNlc3Npb24gfHwgc2Vzc2lvbi5lZGl0cy5sZW5ndGggPT09IDB9IG9uQ2xpY2s9eygpID0+IHZvaWQgcmVvcGVuRXhwb3J0ZWQoKX0+T3BlbiBleHBvcnRlZCBjb3B5PC9idXR0b24+CiAgICAgICAgICAgIDxidXR0b24gZGlzYWJsZWQ9eyFzZXNzaW9ufSBvbkNsaWNrPXsoKSA9PiB2b2lkIHJlc2V0KCl9PlJlc2V0IHRvIG9yaWdpbmFsPC9idXR0b24+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIHtzZXNzaW9uICYmIHNlc3Npb24uZWRpdHMubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgICAgIDxvbCBjbGFzc05hbWU9ImVkaXRzIj57c2Vzc2lvbi5lZGl0cy5tYXAoKGUsIGkpID0+IDxsaSBrZXk9e2l9PntlfTwvbGk+KX08L29sPgogICAgICAgICAgKX0KICAgICAgICAgIHtzZXNzaW9uICYmIG1hcHBpbmcudW5tYXBwZWQubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgICAgIDxkZXRhaWxzIGNsYXNzTmFtZT0idW5tYXBwZWQiPgogICAgICAgICAgICAgIDxzdW1tYXJ5PnttYXBwaW5nLnVubWFwcGVkLmxlbmd0aH0gcnVuKHMpIG5vdCBzYWZlbHkgZWRpdGFibGU8L3N1bW1hcnk+CiAgICAgICAgICAgICAgPHVsPnttYXBwaW5nLnVubWFwcGVkLnNsaWNlKDAsIDEyKS5tYXAoKHUsIGkpID0+IDxsaSBrZXk9e2l9PnB7dS5wYWdlSW5kZXggKyAxfSN7dS5ydW5PcmRpbmFsfToge3UucmVhc29ufTwvbGk+KX08L3VsPgogICAgICAgICAgICA8L2RldGFpbHM+CiAgICAgICAgICApfQoKICAgICAgICAgIDxoMj5TdGF0dXM8L2gyPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9InN0YXR1cyIgZGF0YS10ZXN0aWQ9InN0YXR1cyI+CiAgICAgICAgICAgIHtzdGF0dXMubWFwKChzLCBpKSA9PiA8ZGl2IGtleT17aX0gY2xhc3NOYW1lPXtgc3RhdHVzLSR7cy5raW5kfWB9PntzLnRleHR9PC9kaXY+KX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvYXNpZGU+CiAgICAgIDwvZGl2PgoKICAgICAgPGZvb3RlciBjbGFzc05hbWU9ImZvb3QiPgogICAgICAgIEJyb3dzZXItbG9jYWwgYnkgZGVzaWduOiBubyB1cGxvYWRzLCBubyBzZXJ2ZXIgcHJvY2Vzc2luZywgbm8gYW5hbHl0aWNzLiBFbmdpbmUgcmVmdXNhbHMgYXJlIGZpbmFsIOKAlCBhbiBlZGl0IHRoYXQgY2Fubm90IGJlIHByb3ZlbiBzYWZlIGlzIG5vdCBhcHBsaWVkLgogICAgICAgIEtub3duIGxpbWl0czogbm8gcmVmbG93IChsb25nZXIgcmVwbGFjZW1lbnRzIGNhbiBvdmVybGFwIGZvbGxvd2luZyB0ZXh0OyB0aGUgZW5naW5lIHJlcG9ydHMgd2lkdGggY2hhbmdlcyksIHNpbmdsZS1ydW4gZnJhZ21lbnRzIG9ubHksIExhdGluIHNjcmlwdCBvbmx5IGluIHRoaXMgbWlsZXN0b25lLgogICAgICA8L2Zvb3Rlcj4KICAgIDwvZGl2PgogICk7Cn0K
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { getDocument, GlobalWorkerOptions, TextLayer } from 'pdfjs-dist';
+import type { PDFDocumentProxy, PDFPageProxy } from 'pdfjs-dist';
+import {
+  applyFragment, applyWholeRun, extractDocument, type EditOutcome, type PageData,
+} from './engine-adapter';
+import {
+  mapRunsToItems, rangeInRun, validateFragment, type MappedTarget, type MappingResult, type ViewerItem,
+} from './selection-map';
+
+GlobalWorkerOptions.workerSrc = 'assets/pdfjs/pdf.worker.min.mjs';
+
+const MAX_FILE_BYTES = 50 * 1024 * 1024;
+
+interface Session {
+  name: string;
+  // The file the user opened first in this session. These two fields are
+  // pinned at open time and NEVER reassigned afterwards — in particular,
+  // opening the exported copy must not replace them, so "Reset to original"
+  // always returns to the file the user actually opened.
+  originalName: string;
+  originalBytes: Uint8Array;
+  currentBytes: Uint8Array;
+  edits: string[];
+}
+
+interface SelectionState {
+  target: MappedTarget;
+  mode: 'whole-run' | 'fragment';
+  fragment?: { start: number; end: number; text: string };
+}
+
+interface StatusEntry { kind: 'ok' | 'error' | 'info'; text: string }
+
+export default function App() {
+  const [session, setSession] = useState<Session | null>(null);
+  const [enginePages, setEnginePages] = useState<PageData[]>([]);
+  const [mapping, setMapping] = useState<MappingResult>({ targets: [], unmapped: [] });
+  const [selection, setSelection] = useState<SelectionState | null>(null);
+  const [replacement, setReplacement] = useState('');
+  const [status, setStatus] = useState<StatusEntry[]>([]);
+  const [scale, setScale] = useState(1.25);
+  const [pageNow, setPageNow] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
+  const [busy, setBusy] = useState(false);
+
+  const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
+  const pagesHostRef = useRef<HTMLDivElement>(null);
+  const renderGenRef = useRef(0);
+  const itemsRef = useRef<ViewerItem[][]>([]);
+  // Key of the selection the panel currently reflects. Browsers deliver
+  // selectionchange asynchronously (and sometimes repeatedly); a repeat
+  // delivery for the SAME selection must not clobber text the user has
+  // already typed into the replacement box.
+  const selKeyRef = useRef('');
+
+  const say = useCallback((kind: StatusEntry['kind'], text: string) => {
+    setStatus((s) => [{ kind, text }, ...s].slice(0, 30));
+  }, []);
+
+  const destroyPdf = useCallback(async () => {
+    if (pdfDocRef.current) {
+      const doc = pdfDocRef.current;
+      pdfDocRef.current = null;
+      // Never let a stuck destroy stall the next document: race it and
+      // abandon the old document if the worker does not answer promptly
+      // (the generation counter already keeps stale renders out).
+      try {
+        await Promise.race([
+          doc.destroy(),
+          new Promise((r) => setTimeout(r, 2000)),
+        ]);
+      } catch { /* already gone */ }
+    }
+  }, []);
+
+  /** (Re)build the viewer + engine extraction + mapping for a byte state. */
+  const loadIntoViewer = useCallback(async (bytes: Uint8Array) => {
+    const gen = ++renderGenRef.current;
+    await destroyPdf();
+    const host = pagesHostRef.current;
+    if (host) host.innerHTML = '';
+    setSelection(null);
+    selKeyRef.current = '';
+
+    const extracted = await extractDocument(bytes.slice());
+    if (gen !== renderGenRef.current) return;
+    setEnginePages(extracted.pages);
+
+    const doc = await getDocument({
+      data: bytes.slice(),
+      standardFontDataUrl: 'assets/standard_fonts/',
+      cMapUrl: 'assets/cmaps/',
+      cMapPacked: true,
+    }).promise;
+    if (gen !== renderGenRef.current) { await doc.destroy(); return; }
+    pdfDocRef.current = doc;
+    setPageCount(doc.numPages);
+    setPageNow(1);
+    if (!host) return;
+
+    const itemsByPage: ViewerItem[][] = [];
+    for (let p = 1; p <= doc.numPages; p++) {
+      const page: PDFPageProxy = await doc.getPage(p);
+      const viewport = page.getViewport({ scale });
+      const wrap = document.createElement('div');
+      wrap.className = 'page-wrap';
+      wrap.dataset.page = String(p);
+      wrap.style.width = `${viewport.width}px`;
+      wrap.style.height = `${viewport.height}px`;
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.floor(viewport.width * devicePixelRatio);
+      canvas.height = Math.floor(viewport.height * devicePixelRatio);
+      canvas.style.width = `${viewport.width}px`;
+      canvas.style.height = `${viewport.height}px`;
+      wrap.appendChild(canvas);
+      const ctx = canvas.getContext('2d')!;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      // A page's canvas render must never block the text layer/mapping:
+      // some environments leave the render promise unsettled even while
+      // painting completes. Race it and continue honestly on timeout.
+      const renderTask = page.render({ canvasContext: ctx, viewport });
+      const settled = await Promise.race([
+        renderTask.promise.then(() => 'done').catch(() => 'error'),
+        new Promise<string>((r) => setTimeout(() => r('timeout'), 6000)),
+      ]);
+      if (settled === 'timeout') {
+        renderTask.cancel();
+        say('info', `Page ${p}: the canvas render did not settle within 6s in this browser — the page image may still appear, and text selection/editing is unaffected.`);
+      }
+      if (gen !== renderGenRef.current) return;
+
+      // Same resilience for the text layer: a page whose text layer cannot
+      // be built in time is shown but its runs stay unselectable, with the
+      // reason reported — the document as a whole never stalls.
+      const textContent = await Promise.race([
+        page.getTextContent().catch(() => null),
+        new Promise<null>((r) => setTimeout(() => r(null), 15000)),
+      ]);
+      if (!textContent) {
+        say('error', `Page ${p}: the text layer did not build in this browser, so this page's text cannot be selected safely. Other pages are unaffected.`);
+        itemsByPage[p - 1] = [];
+        host.appendChild(wrap);
+        continue;
+      }
+      const layerDiv = document.createElement('div');
+      layerDiv.className = 'textLayer';
+      layerDiv.style.setProperty('--scale-factor', String(scale));
+      wrap.appendChild(layerDiv);
+      const layer = new TextLayer({ textContentSource: textContent, container: layerDiv, viewport });
+      await Promise.race([
+        layer.render().catch(() => {}),
+        new Promise<void>((r) => setTimeout(r, 15000)),
+      ]);
+      layer.textDivs.forEach((div, i) => {
+        div.dataset.page = String(p - 1);
+        div.dataset.item = String(i);
+      });
+      itemsByPage[p - 1] = textContent.items
+        .filter((it): it is Extract<typeof it, { str: string }> => 'str' in it)
+        .map((it, i) => ({
+          pageIndex: p - 1, itemIndex: i, str: it.str, x: it.transform[4], y: it.transform[5], width: it.width,
+        }));
+      host.appendChild(wrap);
+    }
+    if (gen !== renderGenRef.current) return;
+    itemsRef.current = itemsByPage;
+    const result = mapRunsToItems(extracted.pages, itemsByPage);
+    setMapping(result);
+    say('info', `Mapped ${result.targets.length} editable run(s); ${result.unmapped.length} run(s) cannot be mapped safely and are not selectable.`);
+  }, [destroyPdf, scale, say]);
+
+  // Re-render at a new zoom (keeps the same bytes and edit history).
+  useEffect(() => {
+    if (session) void loadIntoViewer(session.currentBytes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scale]);
+
+  const openFile = useCallback(async (file: File) => {
+    if (file.size > MAX_FILE_BYTES) {
+      say('error', `File is ${(file.size / 1048576).toFixed(1)} MB — the in-browser limit for this editor is 50 MB.`);
+      return;
+    }
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    setSession({ name: file.name, originalName: file.name, originalBytes: bytes, currentBytes: bytes, edits: [] });
+    setReplacement('');
+    say('info', `Opened ${file.name} (${(file.size / 1024).toFixed(0)} KB). Processing is entirely local — nothing is uploaded.`);
+    await loadIntoViewer(bytes);
+  }, [loadIntoViewer, say]);
+
+  // Selection → validated target. Runs on every selection change.
+  useEffect(() => {
+    const onSel = () => {
+      const sel = window.getSelection();
+      if (!sel || sel.rangeCount === 0) return;
+      const anchorDiv = (sel.anchorNode?.parentElement?.closest?.('[data-item]') ?? null) as HTMLElement | null;
+      const focusDiv = (sel.focusNode?.parentElement?.closest?.('[data-item]') ?? null) as HTMLElement | null;
+      document.querySelectorAll('.textLayer .run-selected').forEach((el) => el.classList.remove('run-selected'));
+      if (!anchorDiv || !focusDiv) return;
+      if (anchorDiv.dataset.page !== focusDiv.dataset.page) {
+        say('error', 'That selection spans more than one page. Select text inside a single run — cross-run editing is not supported.');
+        return;
+      }
+      const pageIndex = Number(anchorDiv.dataset.page);
+      const aItem = Number(anchorDiv.dataset.item);
+      const fItem = Number(focusDiv.dataset.item);
+      const target = mapping.targets.find((t) => t.pageIndex === pageIndex && t.itemIndices.includes(aItem));
+      if (!target) {
+        say('error', 'That text is not safely mappable to an engine text run, so it cannot be edited.');
+        return;
+      }
+      if (!target.itemIndices.includes(fItem)) {
+        say('error', 'That selection spans more than one text run. Select text inside a single run — cross-run editing is not supported.');
+        return;
+      }
+      document.querySelectorAll(`.textLayer [data-page="${pageIndex}"]`).forEach((el) => {
+        if (target.itemIndices.includes(Number((el as HTMLElement).dataset.item))) el.classList.add('run-selected');
+      });
+      if (sel.isCollapsed) {
+        const key = `${target.pageIndex}:${target.runOrdinal}:whole`;
+        setSelection({ target, mode: 'whole-run' });
+        if (selKeyRef.current !== key) { selKeyRef.current = key; setReplacement(target.runText); }
+        return;
+      }
+      const selText = sel.toString();
+      const range = rangeInRun(target, itemsRef.current[pageIndex] ?? [], aItem, sel.anchorOffset, fItem, sel.focusOffset);
+      const v = validateFragment(target, range.start, range.end, selText);
+      if (!v.ok) {
+        say('error', `Fragment selection refused: ${v.reason}.`);
+        setSelection({ target, mode: 'whole-run' });
+        return;
+      }
+      const key = `${target.pageIndex}:${target.runOrdinal}:frag:${v.range.start}-${v.range.end}`;
+      setSelection({ target, mode: 'fragment', fragment: { start: v.range.start, end: v.range.end, text: selText } });
+      if (selKeyRef.current !== key) { selKeyRef.current = key; setReplacement(selText); }
+    };
+    document.addEventListener('selectionchange', onSel);
+    return () => document.removeEventListener('selectionchange', onSel);
+  }, [mapping, say]);
+
+  const applyEdit = useCallback(async () => {
+    if (!session || !selection || busy) return;
+    setBusy(true);
+    const { target, mode, fragment } = selection;
+    let out: EditOutcome;
+    try {
+      out = mode === 'whole-run'
+        ? await applyWholeRun(session.currentBytes, target.pageIndex, target.runOrdinal, target.runText, replacement)
+        : await applyFragment(session.currentBytes, {
+          pageIndex: target.pageIndex, runOrdinal: target.runOrdinal, matchText: target.runText,
+          start: fragment!.start, end: fragment!.end, replacement,
+        });
+    } catch (e) {
+      say('error', `Edit failed unexpectedly: ${e instanceof Error ? e.message : String(e)}`);
+      setBusy(false);
+      return;
+    }
+    if (!out.ok) {
+      say('error', `Edit refused (${out.reason}): ${out.detail} — the document was not changed.`);
+      setBusy(false);
+      return;
+    }
+    const next: Session = {
+      ...session,
+      currentBytes: out.bytes!,
+      edits: [...session.edits, `${mode === 'whole-run' ? 'Run' : 'Fragment'} p${target.pageIndex + 1}#${target.runOrdinal}: ${JSON.stringify(mode === 'whole-run' ? target.runText : fragment!.text)} → ${JSON.stringify(replacement)} (${out.path})`],
+    };
+    setSession(next);
+    say('ok', `Edited via ${out.path}. ${out.detail}`);
+    try {
+      await loadIntoViewer(out.bytes!);
+    } catch (e) {
+      say('error', `The edit was applied but the preview failed to reload: ${e instanceof Error ? e.message : String(e)} — use Download to get the edited file, or Reset.`);
+    }
+    setBusy(false);
+  }, [busy, loadIntoViewer, replacement, say, selection, session]);
+
+  const download = useCallback(() => {
+    if (!session) return;
+    const blob = new Blob([session.currentBytes.slice().buffer as ArrayBuffer], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = session.name.replace(/\.pdf$/i, '') + '-edited.pdf';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    say('ok', 'Downloaded the edited PDF. You can reopen it here with “Open exported copy”.');
+  }, [say, session]);
+
+  const reset = useCallback(async () => {
+    if (!session) return;
+    setSession({ ...session, name: session.originalName, currentBytes: session.originalBytes, edits: [] });
+    say('info', `Reset to ${session.originalName} — the file you opened first. All edits were discarded.`);
+    await loadIntoViewer(session.originalBytes);
+  }, [loadIntoViewer, say, session]);
+
+  const reopenExported = useCallback(async () => {
+    if (!session) return;
+    const bytes = session.currentBytes;
+    // The exported copy becomes the open document, but the session's pinned
+    // original (originalName/originalBytes) is deliberately left untouched:
+    // Reset must always be able to return to the file the user opened first.
+    setSession({ ...session, name: session.name.replace(/\.pdf$/i, '') + '-edited.pdf', currentBytes: bytes, edits: [] });
+    say('info', `The exported copy is now the open document. “Reset to original” still returns to ${session.originalName}, the file you opened first.`);
+    await loadIntoViewer(bytes);
+  }, [loadIntoViewer, say, session]);
+
+  const gotoPage = (p: number) => {
+    const host = pagesHostRef.current;
+    const el = host?.querySelector(`.page-wrap[data-page="${p}"]`);
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setPageNow(p);
+  };
+
+  return (
+    <div className="app">
+      <header className="toolbar">
+        <div className="brand">PDF Engine Editor</div>
+        <label className="open-btn">
+          Open PDF
+          <input type="file" accept="application/pdf,.pdf" className="visually-hidden" aria-label="Open a PDF file" onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) void openFile(f);
+            e.target.value = '';
+          }} />
+        </label>
+        <span className="file-name">{session ? session.name : 'No file open'}</span>
+        <span className="spacer" />
+        <div className="pager">
+          <button disabled={!session || pageNow <= 1} onClick={() => gotoPage(pageNow - 1)}>‹ Prev</button>
+          <span>{session ? `Page ${pageNow} / ${pageCount}` : '—'}</span>
+          <button disabled={!session || pageNow >= pageCount} onClick={() => gotoPage(pageNow + 1)}>Next ›</button>
+        </div>
+        <label className="zoom">Zoom
+          <select value={scale} onChange={(e) => setScale(Number(e.target.value))}>
+            {[0.75, 1, 1.25, 1.5, 2].map((z) => <option key={z} value={z}>{Math.round(z * 100)}%</option>)}
+          </select>
+        </label>
+      </header>
+
+      <div className="main">
+        <div className="viewer">
+          {/* pagesHost is managed imperatively (canvas + text layers);
+              React must never render children into it. */}
+          <div className="pages-host" ref={pagesHostRef} data-testid="viewer" />
+          {!session && (
+            <div className="empty">
+              <h1>Edit PDF text, entirely in your browser</h1>
+              <p>Open a PDF to begin. Your file is processed locally on this device — it is never uploaded, and this app has no backend, no accounts, and no tracking.</p>
+              <p className="limits">Supported: replacing existing text runs (or a fragment of a run) in Latin-script documents when the engine can prove the edit is safe. Arabic/Urdu editing, cross-run selections, and scanned/image-only pages are refused with an explanation — never silently faked.</p>
+            </div>
+          )}
+        </div>
+
+        <aside className="panel">
+          <h2>Selection &amp; edit</h2>
+          {!selection && <p className="hint">Click text in the document to select its run, or drag across part of a run to edit just that fragment. Only text that maps exactly to an engine run can be selected.</p>}
+          {selection && (
+            <div className="sel-info">
+              <div><strong>Page</strong> {selection.target.pageIndex + 1} · <strong>run</strong> #{selection.target.runOrdinal} · <strong>operator</strong> {selection.target.operator}</div>
+              <div className="sel-text">{selection.mode === 'whole-run' ? selection.target.runText : `Fragment: ${JSON.stringify(selection.fragment!.text)} of ${JSON.stringify(selection.target.runText)}`}</div>
+              <div className="mode-row">
+                <label><input type="radio" checked={selection.mode === 'whole-run'} onChange={() => setSelection({ target: selection.target, mode: 'whole-run' })} /> Whole run</label>
+                <label><input type="radio" checked={selection.mode === 'fragment'} disabled={!selection.fragment && selection.mode !== 'fragment'} onChange={() => selection.fragment && setSelection({ ...selection, mode: 'fragment' })} /> Fragment (drag-select part of the run)</label>
+              </div>
+              <label className="repl-label">Replacement text
+                <input data-testid="replacement" value={replacement} onChange={(e) => setReplacement(e.target.value)} />
+              </label>
+              <button className="apply" data-testid="apply" disabled={busy} onClick={() => void applyEdit()}>{busy ? 'Applying…' : 'Apply edit'}</button>
+            </div>
+          )}
+
+          <h2>Document</h2>
+          <div className="doc-actions">
+            <button data-testid="download" disabled={!session || session.edits.length === 0} onClick={download}>Download edited PDF</button>
+            <button disabled={!session || session.edits.length === 0} onClick={() => void reopenExported()}>Open exported copy</button>
+            <button disabled={!session} onClick={() => void reset()}>Reset to original</button>
+          </div>
+          {session && session.edits.length > 0 && (
+            <ol className="edits">{session.edits.map((e, i) => <li key={i}>{e}</li>)}</ol>
+          )}
+          {session && mapping.unmapped.length > 0 && (
+            <details className="unmapped">
+              <summary>{mapping.unmapped.length} run(s) not safely editable</summary>
+              <ul>{mapping.unmapped.slice(0, 12).map((u, i) => <li key={i}>p{u.pageIndex + 1}#{u.runOrdinal}: {u.reason}</li>)}</ul>
+            </details>
+          )}
+
+          <h2>Status</h2>
+          <div className="status" data-testid="status">
+            {status.map((s, i) => <div key={i} className={`status-${s.kind}`}>{s.text}</div>)}
+          </div>
+        </aside>
+      </div>
+
+      <footer className="foot">
+        Browser-local by design: no uploads, no server processing, no analytics. Engine refusals are final — an edit that cannot be proven safe is not applied.
+        Known limits: no reflow (longer replacements can overlap following text; the engine reports width changes), single-run fragments only, Latin script only in this milestone.
+      </footer>
+    </div>
+  );
+}
