@@ -152,25 +152,45 @@ Engine processing is main-thread; multi-second stalls are possible on
 large files in slow environments — per-page timeouts keep the UI
 honest rather than frozen.
 
-## 8. GitHub — NOT completed (permission), exact remaining steps
+## 8. GitHub — repository created by the owner; source pushed and verified
 
-The connector's GitHub App cannot create repositories (attempted:
-`create_repository` → `403 Resource not accessible by integration`),
-and no Git credentials are configured for `git push`. The local
-repository is complete and committed. To publish:
+The owner created **https://github.com/Ch-israr/pdf-engine-editor**
+(public, branch `main`) on 2026-10-16. Creating it via the connector
+had failed (`403 Resource not accessible by integration` — the Muse
+GitHub App cannot create repositories), but with the repository in
+place the connector could push to it.
 
-1. Create the repo: https://github.com/new — owner **Ch-israr**, name
-   **pdf-engine-editor**, **Private**, and do NOT add a README,
-   .gitignore, or license (the project already contains them).
-2. Then either push from a git-authenticated machine:
-   `cd ~/workspace/pdf-engine-editor && git remote add origin https://github.com/Ch-israr/pdf-engine-editor.git && git push -u origin main`
-   — or add the new repo to the Muse GitHub App's repository access
-   (GitHub → Settings → Installations → Muse → Repository access) and
-   say so here; the files can then be pushed through the connector.
-3. Verify: the repository page shows commit `9a8f745` (plus the report
-   commit) on branch `main`.
+**Pushed and verified:** all 25 text files (application source,
+vendored engine source, tests, README, this report's first version,
+`render.yaml`, configs). Verification is byte-level: the remote blob
+SHAs returned by GitHub match the local git blob SHAs exactly
+(spot-verified for `README.md`, `src/App.tsx`,
+`engine/src/replace.ts`, `render.yaml`; the text channel is exact).
 
-**Intended URL once created:** https://github.com/Ch-israr/pdf-engine-editor
+**Not yet pushed — 19 files the connector cannot carry:** the
+connector's write tools transfer text only. Two probes proved binary
+files are corrupted by both available routes (base64 content is stored
+verbatim as text; raw content is UTF-8-expanded, 1293 → 1722 bytes on
+the probe PDF), and `package-lock.json` (143,768 bytes) exceeds the
+connector CLI's single-argument limit. The corrupt probe file was
+deleted from the remote immediately (commit `741c0fe`). The missing
+files are the 10 fallback font files under `engine/assets/`, the 8
+fixture PDFs under `test/fixtures/`, and `package-lock.json`.
+
+**Exact completion steps (one push, from any machine with git):**
+```sh
+git clone https://github.com/Ch-israr/pdf-engine-editor.git
+cd pdf-engine-editor
+# unzip pdf-engine-editor-missing-files.zip (supplied with the
+# hand-off message) into this directory — paths are relative
+git add -A && git commit -m "Add binary assets: engine fonts, test fixtures, package-lock"
+git push
+```
+Until that push lands, the remote tree cannot build the editor
+(`scripts/sync-assets.mjs` copies the engine fonts at build time).
+The local repository in the build workspace remains the complete
+reference copy (commits `9a8f745`, `f865add`, and the report-update
+commit).
 
 ## 9. Render — pending the GitHub repository, exact steps
 
