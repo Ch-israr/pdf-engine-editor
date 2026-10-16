@@ -1,1 +1,258 @@
-IyBQREYgRW5naW5lIEVkaXRvciDigJQgQnVpbGQgUmVwb3J0ICgyMDI2LTEwLTE2KQoKIyMgMS4gUHJvamVjdCBhbmQgaXNvbGF0aW9uCgotICoqTmV3IHByb2plY3Q6KiogYH4vd29ya3NwYWNlL3BkZi1lbmdpbmUtZWRpdG9yL2Ag4oCUIGEgbmV3LCBpc29sYXRlZAogIGRpcmVjdG9yeSB3aXRoIGl0cyBvd24gR2l0IHJlcG9zaXRvcnkgKGxvY2FsIGNvbW1pdCBgOWE4Zjc0NWAsIGJyYW5jaAogIGBtYWluYCkuIEl0IHdhcyBOT1QgY3JlYXRlZCBpbnNpZGUgYW55IGV4aXN0aW5nIHJlcG9zaXRvcnkuCi0gKipTdGFuZGFsb25lIGVuZ2luZSAodXBzdHJlYW0sIHVudG91Y2hlZCk6KiogYH4vd29ya3NwYWNlL2VuZ2luZS1wb2MvYC4KICBBIHByZS13b3JrIHNuYXBzaG90IChTSEEtMjU2IG1hbmlmZXN0ICsgZmlsZSBjb3BpZXMpIHdhcyB0YWtlbiBhdAogIGBlbmdpbmUtcG9jL3NuYXBzaG90cy9waGFzZTktZWRpdG9yL2A7IGFmdGVyIGFsbCB3b3JrLCAqKmV2ZXJ5IGVuZ2luZQogIHNvdXJjZSBhbmQgYXNzZXQgZmlsZSBpcyBieXRlLWlkZW50aWNhbCB0byB0aGUgc25hcHNob3QqKi4KLSAqKlByb2R1Y3Rpb24gUERGRURJICh1bnRvdWNoZWQpOioqIGB+L3dvcmtzcGFjZS9wZGZlZGkvYCDigJQgdmVyaWZpZWQKICBjbGVhbiBhdCBgMmMwMmQ0ZGAgYmVmb3JlIGFuZCBhZnRlcjsgbmV2ZXIgbW9kaWZpZWQsIGRlcGxveWVkLCBvcgogIHB1c2hlZCB0by4KLSAqKlJlc2VhcmNoIGxhYiAodW50b3VjaGVkKToqKiBgfi93b3Jrc3BhY2UvZW5naW5lLXBvYy9sYWIvYCDigJQgcmVhZAogIG9ubHkgKGl0cyBwcm92ZW4gYnJvd3NlciBjb25maWd1cmF0aW9uIHdhcyByZXBsaWNhdGVkLCBub3QgbW9kaWZpZWQpLgotIFRoZSBuZXcgYXBwIHZlbmRvcnMgYSBzbmFwc2hvdCBvZiB0aGUgZW5naW5lIHVuZGVyIGBlbmdpbmUvYAogIChwcm92ZW5hbmNlOiBgZW5naW5lL0VOR0lORS1OT1RJQ0UubWRgKS4gVGhlIHN0YW5kYWxvbmUgZW5naW5lIHJlbWFpbnMKICB0aGUgdXBzdHJlYW0uCi0gTm8gcHJvZHVjdGlvbiBzZWNyZXRzLCBlbnZpcm9ubWVudCBmaWxlcywgQVBJIGtleXMsIG9yIHVzZXIgZGF0YSB3ZXJlCiAgY29waWVkLiBUaGUgcHJvZHVjdGlvbiBidW5kbGUgd2FzIHNjYW5uZWQ6IG5vIG1hY2hpbmUgcGF0aHMsIHRva2VucywKICBvciBjcmVkZW50aWFsLXNoYXBlZCBzdHJpbmdzLgoKIyMgMi4gQnJvd3Nlci1jb21wYXRpYmlsaXR5IGV2aWRlbmNlIChQaGFzZSAxKQoKLSBUaGUgZW5naW5lIGNvcmUgaXMgZW52aXJvbm1lbnQtYWdub3N0aWM6IGl0cyBvbmx5IE5vZGUgZGVwZW5kZW5jeSBpcyBhCiAgZHluYW1pYyBgbm9kZTpmc2AgaW1wb3J0IGJlaGluZCBgY29uZmlndXJlRW5naW5lKClgIGhvc3QgaW5qZWN0aW9uCiAgcG9pbnRzIChgZW5naW5lL3NyYy9yZXBsYWNlLnRzYCksIHVucmVhY2hhYmxlIG9uY2UgYSBicm93c2VyIGhvc3QKICBjb25maWd1cmVzIGZvbnQgbG9hZGluZy4gcGRmLWxpYiAxLjE3LjEgaXMgcHVyZSBKYXZhU2NyaXB0OyBmb250a2l0CiAgMi4wLjQgcnVucyBpbiBicm93c2VyczsgZmFsbGJhY2sgZm9udHMgYXJlIHN0YXRpYyBhc3NldHMuCi0gUHJpb3IgcHJvb2YgZXhpc3RlZCAodGhlIHJlc2VhcmNoIGxhYiByYW4gdGhpcyBlbmdpbmUgZnVsbHkKICBjbGllbnQtc2lkZSBpbiBDaHJvbWl1bSksIGFuZCB0aGlzIHByb2plY3QgKipyZS1wcm92ZWQgaXQgZW5kLXRvLWVuZCoqCiAgd2l0aCBpdHMgb3duIGJ1aWxkIGFuZCBicm93c2VyIHRlc3RzICjCpzUpLgotIEJhc2VsaW5lIGVuZ2luZSBzdWl0ZSBiZWZvcmUgYW55IHdvcmsgKGZyb20gYGVuZ2luZS1wb2MvYCk6CiAgYG5weCB0c2MgLS1ub0VtaXRgLCBgbnB4IHRzeCB0ZXN0L3J1bi1wb2MudHNgICg4LzgpLAogIGBweXRob24gdGVzdC92ZXJpZnkucHlgICgyNS8yNSksIGBucHggdHN4IHRlc3QvcnVuLXJlYWx3b3JsZC50c2AgKDEzKSwKICBgcHl0aG9uIHRlc3QvdmVyaWZ5LXJ3LnB5YCAoNTAvNTApLCBgbnB4IHRzeCB0ZXN0L3J1bi1mcmFnbWVudHMudHNgCiAgKDI5LzI5KSwgYHB5dGhvbiB0ZXN0L3ZlcmlmeS1mcmFnbWVudHMucHlgICgxNTAvMTUwKSwKICBgbnB4IHRzeCB0ZXN0L3J1bi1hdWRpdC1wcm9iZXMudHNgICgxOC8xOCksCiAgYHB5dGhvbiB0ZXN0L3ZlcmlmeS1hdWRpdC1wcm9iZXMucHlgICgxMS8xMSkg4oCUICoqYWxsIGV4aXQgMCoqLgoKIyMgMy4gQXJjaGl0ZWN0dXJlIGFuZCBkZXBlbmRlbmN5L2xpY2Vuc2UgZGVjaXNpb25zCgotIFJlYWN0IDE4ICsgVHlwZVNjcmlwdCArIFZpdGUgNiAoc3RhdGljIHNpdGU7IG5vIGJhY2tlbmQpLgotIFBERi5qcyAocGRmanMtZGlzdCA0LjEwLjM4LCBBcGFjaGUtMi4wKSBmb3IgcmVuZGVyaW5nICsgdGV4dCBsYXllci4KICBXb3JrZXIsIHN0YW5kYXJkIGZvbnRzLCBhbmQgQ01hcHMgYXJlIGNvcGllZCBmcm9tIHRoZSBpbnN0YWxsZWQKICBwYWNrYWdlIGF0IGJ1aWxkIHRpbWUgKGBzY3JpcHRzL3N5bmMtYXNzZXRzLm1qc2ApIGFuZCBzZXJ2ZWQKICBzYW1lLW9yaWdpbi4KLSBFbmdpbmUgYWNjZXNzIG9ubHkgdGhyb3VnaCBgc3JjL2VuZ2luZS1hZGFwdGVyLnRzYCwgY29uZmlndXJlZCBmb3IKICB0aGUgYnJvd3NlciBleGFjdGx5IGFzIHZhbGlkYXRlZDogZmFsbGJhY2sgZm9udHMgZmV0Y2hlZCBmcm9tIHRoZQogIGFwcCdzIG93biBhc3NldHMsIHBkZi1saWIgZHJpdmVuIGJ5IGZvbnRraXQyLCBmYWxsYmFjayBmb250cyBlbWJlZGRlZAogIHdob2xlIChwZGYtbGliJ3Mgc3Vic2V0IGVtYmVkZGVyIGNhbm5vdCB1c2UgZm9udGtpdCAyLng7IGVkaXRpbmcKICBkZWNpc2lvbnMgaWRlbnRpY2FsLCBvdXRwdXRzIGxhcmdlcikuCi0gRGVwZW5kZW5jaWVzOiBwZGYtbGliIChNSVQpLCBmb250a2l0IDEuOC4xICsgZm9udGtpdDIgPSBmb250a2l0CiAgMi4wLjQgKE1JVCksIHBkZmpzLWRpc3QgKEFwYWNoZS0yLjApLCByZWFjdC9yZWFjdC1kb20gKE1JVCksCiAgdml0ZSArIHBsdWdpbi1yZWFjdCAoTUlUKSwgdHN4L3R5cGVzY3JpcHQgKGRldikuIEZhbGxiYWNrIGZvbnRzOgogIExpYmVyYXRpb24gKFNJTCBPRkwgMS4xKSwgRGVqYVZ1IChwZXJtaXNzaXZlKS4KLSAqKlNlbGVjdGlvbiBtYXBwaW5nKiogKGBzcmMvc2VsZWN0aW9uLW1hcC50c2ApOiBQREYuanMgc3BsaXRzIHJ1bnMKICBpbnRvIHdvcmQvc3BhY2UgaXRlbXMsIHNvIGEgcnVuIG1hcHMgdG8gYSBjb25zZWN1dGl2ZSBzZXF1ZW5jZSBvZgogIHZpZXdlciBpdGVtcywgYWNjZXB0ZWQgb25seSB3aGVuIHRoZSBjb25jYXRlbmF0aW9uIGVxdWFscyB0aGUgcnVuCiAgdGV4dCBleGFjdGx5LCB0aGUgZmlyc3QgaXRlbSdzIG9yaWdpbiBtYXRjaGVzIHRoZSBydW4ncyByZWNvcmRlZAogIG9yaWdpbiAo4omkMi41IHB0KSwgY29uc2VjdXRpdmUgaXRlbXMgYXJlIGNvbnRpZ3VvdXMgYWxvbmcgdGhlIHJ1bidzCiAgYmFzZWxpbmUgKOKJpDEuNSBwdCBwZXIgam9pbnQpLCBhbmQgdGhlIHNlZ21lbnRhdGlvbiBpcyB1bmlxdWUuCiAgU2VsZWN0aW9ucyBzcGFubmluZyB0d28gcnVucywgYW1iaWd1b3VzIG1hcHBpbmdzLCBhbmQgc3RhbGUgZnJhZ21lbnQKICBvZmZzZXRzIGFyZSByZWZ1c2VkIHdpdGggcmVhc29ucy4gT24gd3JpdGVyLnBkZiwgMzAgb2YgNDkgcnVucyBtYXA7CiAgdGhlIHJlc3QgKHByb2R1Y2VyLXNwbGl0IHJ1bnMgdGhhdCBmYWlsIGV4YWN0IHJlcHJvZHVjdGlvbikgYXJlCiAgbGlzdGVkIGluIHRoZSBVSSBhcyBub3Qgc2FmZWx5IGVkaXRhYmxlLgoKIyMgNC4gRmlsZXMgY3JlYXRlZAoKVGhlIHdob2xlIGBwZGYtZW5naW5lLWVkaXRvci9gIHRyZWU6IGBwYWNrYWdlLmpzb25gLCBgdHNjb25maWcuanNvbmAsCmB2aXRlLmNvbmZpZy50c2AsIGBpbmRleC5odG1sYCwgYHJlbmRlci55YW1sYCwgYFJFQURNRS5tZGAsCmAuZ2l0aWdub3JlYCwgYHNjcmlwdHMvc3luYy1hc3NldHMubWpzYCwgYHNyYy9gIChgbWFpbi50c3hgLCBgQXBwLnRzeGAsCmBzdHlsZXMuY3NzYCwgYGVuZ2luZS1hZGFwdGVyLnRzYCwgYHNlbGVjdGlvbi1tYXAudHNgKSwgYGVuZ2luZS9gCih2ZW5kb3JlZCBzbmFwc2hvdCArIG5vdGljZSArIGZvbnRzKSwgYHRlc3QvYCAoOCBzeW50aGV0aWMgZml4dHVyZXMsCmBpbnRlZ3JhdGlvbi5tdHNgLCBgZTJlLmNqc2AsIGB2ZXJpZnktZXhwb3J0Lm10c2ApLCB0aGlzIHJlcG9ydC4KR2VuZXJhdGVkIGFuZCBnaXQtaWdub3JlZDogYG5vZGVfbW9kdWxlcy9gLCBgZGlzdC9gLCBgcHVibGljL2Fzc2V0cy8qYAoocmVnZW5lcmF0ZWQgYnkgdGhlIGJ1aWxkKSwgYHRlc3Qvb3V0L2AuCgojIyA1LiBUZXN0cyBhbmQgcmVzdWx0cwoKKipJbnRlZ3JhdGlvbiBzdWl0ZSoqIOKAlCBgbnB4IHRzeCB0ZXN0L2ludGVncmF0aW9uLm10c2A6ICoqMzQvMzQsIGV4aXQgMC4qKgpDb3ZlcnM6IFRqIHdob2xlLXJ1biAoc2FtZS1mb250KTsgVEogd2hvbGUtcnVuOyBzdWJzZXQtZm9udCBmYWxsYmFjazsKaHlicmlkIGZyYWdtZW50IChGcmVuY2gpOyAvUm90YXRlIDkwIHdob2xlLXJ1bjsgcm90YXRlZC10ZXh0IGZyYWdtZW50OwptdWx0aS1wYWdlIGVkaXQgd2l0aCBwYWdlIGlzb2xhdGlvbjsgYCdgIG9wZXJhdG9yIHJlZnVzYWxzIChib3RoIEFQSXMsCmV4YWN0IHJlYXNvbnMpOyBBcmFiaWMgcmVwbGFjZW1lbnQgcmVmdXNhbCArIGlucHV0LWJ5dGVzIGludGVncml0eSArCnZhbGlkIGVkaXQgYWZ0ZXIgYSByZWZ1c2FsOyB3aWR0aC1sZXNzIGZvbnQgaHlicmlkIHJlZnVzYWwKKGBmcmFnbWVudC13aWR0aHMtdW5hdmFpbGFibGVgKTsgc2Nhbm5lZCBkb2N1bWVudCAoemVybyBydW5zLApgdGFyZ2V0LW5vdC1mb3VuZGApOyBsb25nZXIgcmVwbGFjZW1lbnQgd2l0aCB0aGUgZW5naW5lJ3Mgbm8tcmVmbG93CndpZHRoIHJlcG9ydDsgc2VsZWN0aW9uIG1hcHBpbmcgb24gcmVhbCBQREYuanMgaXRlbXMgKGV4YWN0LCBzZXF1ZW5jZSwKYW1iaWd1aXR5LWJ5LWR1cGxpY2F0aW9uLCBzdGFsZS1mcmFnbWVudCByZWplY3Rpb24sIGNyb3NzLWl0ZW0gcmFuZ2VzKTsKZml4dHVyZSBmaWxlcyBieXRlLWlkZW50aWNhbCBhZnRlciB0aGUgcnVuLgoKKipCcm93c2VyIEUyRSoqIOKAlCBgbm9kZSB0ZXN0L2UyZS5janNgIChwcm9kdWN0aW9uIGJ1aWxkIHNlcnZlZCB0byByZWFsCmhlYWRsZXNzIENocm9taXVtIG92ZXIgQ0RQIEZldGNoIGludGVyY2VwdGlvbiBhdCBhIHN5bnRoZXRpYyBvcmlnaW47CnRoZSBzYW5kYm94IGJsb2NrcyBsb29wYmFjayk6ICoqMTQvMTQsIGV4aXQgMCoqLCBwbHVzIGluZGVwZW5kZW50CmV4cG9ydCB2ZXJpZmljYXRpb24gKGB0ZXN0L3ZlcmlmeS1leHBvcnQubXRzYDogZXhwb3J0ZWQgUERGIHJlLXBhcnNlZApieSB0aGUgZW5naW5lIOKAlCAzIHBhZ2VzLCBSRUQgcHJlc2VudCwgQlJPV04gYWJzZW50LCBGcmVuY2ggdGV4dAppbnRhY3QpLiBGbG93IHByb3ZlbjogYm9vdCDihpIgdXBsb2FkIHdyaXRlci5wZGYg4oaSIHJ1bnMgbWFwIOKGkiBzZWxlY3QgdGhlCkJST1dOIHJ1biBpbiB0aGUgcmVuZGVyZWQgdGV4dCBsYXllciDihpIgYXBwbHkgUkVEIChmYWxsYmFjay1mb250KSDihpIKZG93bmxvYWQgKGJ5dGVzIGNhcHR1cmVkKSDihpIgcHJldmlldyBzaG93cyBSRUQg4oaSIHJlc2V0IHJlc3RvcmVzIHRoZQpvcmlnaW5hbCDihpIgQXJhYmljIHJlcGxhY2VtZW50IHJlZnVzZXMgd2l0aApgc2NyaXB0LW5vdC1zdXBwb3J0ZWQtaW4tdGhpcy1waGFzZWAgYW5kIHRoZSBkb2N1bWVudCBpcyB1bmNoYW5nZWQg4oaSCioqemVybyBjb25zb2xlIGVycm9ycyoqIGFuZCAqKm5vIG5ldHdvcmsgcmVxdWVzdHMgb3V0c2lkZSB0aGUgYXBwCm9yaWdpbioqIChhbGwgb2JzZXJ2ZWQgcmVxdWVzdHMgd2VyZSBzYW1lLW9yaWdpbiBhc3NldCBsb2FkcykuCgoqKkRlZmVjdHMgZm91bmQgYW5kIGZpeGVkIGR1cmluZyB0aGlzIGJ1aWxkKiogKGFsbCBpbiB0aGUgbmV3IGFwcCdzCmNvZGU7IHRoZSBlbmdpbmUgaXRzZWxmIHdhcyBuZXZlciBtb2RpZmllZCk6CjEuIFJlYWN0IHZzIGltcGVyYXRpdmUgRE9NIGNvbmZsaWN0IOKAlCB0aGUgcGFnZXMgY29udGFpbmVyIGlzIG5vdyBhCiAgIFJlYWN0LWNoaWxkbGVzcyBob3N0IGVsZW1lbnQgKHRoZSBlbXB0eSBzdGF0ZSBpcyBhIHNpYmxpbmcgb3ZlcmxheSkuCjIuIEEgaHVuZyBgcGRmLmpzYCBkb2N1bWVudCBgZGVzdHJveSgpYCAob3IgcGFnZSByZW5kZXIgcHJvbWlzZSDigJQgYQogICBrbm93biBoZWFkbGVzcy1DaHJvbWl1bSBiZWhhdmlvdXIpIGNvdWxkIHN0YWxsIGRvY3VtZW50IGxvYWRpbmcKICAgZm9yZXZlcjogZGVzdHJveXMgYW5kIHBlci1wYWdlIHJlbmRlcnMvdGV4dCBsYXllcnMgbm93IHJhY2Ugd2l0aAogICB0aW1lb3V0cyBhbmQgZGVncmFkZSBob25lc3RseSAoYWZmZWN0ZWQgcGFnZXMgcmVwb3J0IHdoeSB0aGVpciB0ZXh0CiAgIGlzIHVuc2VsZWN0YWJsZSBpbnN0ZWFkIG9mIGZyZWV6aW5nIHRoZSBhcHApLgozLiBBIHNlbGVjdGlvbiByYWNlOiB0aGUgYnJvd3NlcidzIGFzeW5jaHJvbm91cyBgc2VsZWN0aW9uY2hhbmdlYAogICBjb3VsZCByZS1kZWxpdmVyIHRoZSBzYW1lIHNlbGVjdGlvbiBhZnRlciB0aGUgdXNlciB0eXBlZCBhCiAgIHJlcGxhY2VtZW50IGFuZCBzaWxlbnRseSByZXNldCB0aGUgcmVwbGFjZW1lbnQgdGV4dCB0byB0aGUgb3JpZ2luYWwKICAgKGNhdWdodCBieSBieXRlLWxldmVsIGluc3BlY3Rpb24gb2YgYW4gRTJFIGV4cG9ydDogdGhlIGZhbGxiYWNrCiAgIGJsb2NrIGhhZCByZWRyYXduIHRoZSBvcmlnaW5hbCB3b3JkKS4gUmUtZGVsaXZlcmllcyBmb3IgYW4gdW5jaGFuZ2VkCiAgIHNlbGVjdGlvbiBubyBsb25nZXIgdG91Y2ggdGhlIHJlcGxhY2VtZW50IGJveDsgdGhlIGtleSByZXNldHMgd2hlbiBhCiAgIG5ldyBkb2N1bWVudCBzdGF0ZSBsb2Fkcy4KCioqUG9zdC1pbnRlZ3JhdGlvbiBlbmdpbmUgYmFzZWxpbmU6KiogdGhlIGZ1bGwgOS1jb21tYW5kIHN1aXRlIHdhcwpyZS1ydW4gaW4gYGVuZ2luZS1wb2MvYCBhZnRlciBhbGwgd29yayDigJQgKiphbGwgZXhpdCAwKiosIGlkZW50aWNhbApyZXN1bHRzIHRvIHRoZSBwcmUtd29yayBydW4uCgoqKkNsZWFuLWVudmlyb25tZW50IGNoZWNrOioqIGBybSAtcmYgbm9kZV9tb2R1bGVzIGRpc3QgJiYgbnBtIGluc3RhbGwKJiYgbnBtIHJ1biBidWlsZGAg4oCUIHBhc3NlcyAodHlwZWNoZWNrIGNsZWFuOyB0aGUgb25seSBidWlsZCB3YXJuaW5nIGlzCmNodW5rIHNpemU6IHBkZi5qcyArIGZvbnRraXQgbWFrZSB0aGUgbWFpbiBKUyB+MS4zNSBNQiAvIH4wLjUgTUIgZ3ppcCwKYSBrbm93biBjb3N0IG9mIGEgZnVsbHkgbG9jYWwgZWRpdG9yKS4KCiMjIDYuIFN1cHBvcnRlZCBhbmQgcmVmdXNlZCBvcGVyYXRpb25zCgpTdXBwb3J0ZWQ6IHdob2xlLXJ1biByZXBsYWNlbWVudCAoc2FtZS1mb250IGFuZCBmYWxsYmFjayBwYXRocyksCnNpbmdsZS1ydW4gZnJhZ21lbnQgcmVwbGFjZW1lbnQgKHNhbWUtZm9udCwgaHlicmlkLCBmYWxsYmFjayksCnJvdGF0ZWQgcGFnZXMvdGV4dCwgbXVsdGktcGFnZSBkb2N1bWVudHMsIExhdGluLXNjcmlwdCB0ZXh0IGluY2wuCkZyZW5jaCBkaWFjcml0aWNzLiBSZWZ1c2VkIChlbmdpbmUgcmVhc29ucyBzdXJmYWNlZCB2ZXJiYXRpbSk6CkFyYWJpYy9VcmR1L0NKSyByZXBsYWNlbWVudHMgKHNjcmlwdCBnYXRlLCBwcmVzZXJ2ZWQpLCBgJ2AvYCJgCm9wZXJhdG9ycywgdW5tYXBwYWJsZSBmb250cywgd2lkdGgtbGVzcy1mb250IGh5YnJpZHMsIFR64omgMTAwIGh5YnJpZHMsCmJvdW5kYXJpZXMgaW5zaWRlIG11bHRpLWNoYXIgZ2x5cGggY29kZXMsIHNjYW5uZWQgcGFnZXMgKG5vIHJ1bnMpLApjcm9zcy1ydW4gb3IgYW1iaWd1b3VzIHNlbGVjdGlvbnMsIGZpbGVzIG92ZXIgNTAgTUIgKGJyb3dzZXIgbWVtb3J5Cmd1YXJkKS4gTm8gT0NSLCBubyByYXN0ZXJpemF0aW9uIHNob3J0Y3V0LCBubyBjbG91ZCBwcm9jZXNzaW5nLgoKIyMgNy4gUGVyZm9ybWFuY2UgYW5kIG1lbW9yeSBsaW1pdGF0aW9ucwoKSW5pdGlhbCBsb2FkIGRvd25sb2FkcyB+MC41IE1CIChnemlwcGVkKSBvZiBKUyBvbmNlOyBlYWNoIHBhZ2UgcmVuZGVycwphdCB0aGUgY2hvc2VuIHpvb20gd2l0aCBhbGwgcGFnZXMgaW4gdGhlIERPTSAoc3VpdGVkIHRvIHNtYWxsL21lZGl1bQpkb2N1bWVudHM7IHZlcnkgbG9uZyBkb2N1bWVudHMgd2lsbCB1c2UgcHJvcG9ydGlvbmFsbHkgbW9yZSBtZW1vcnkpLgpGYWxsYmFjay1wYXRoIGVkaXRzIGVtYmVkIGEgd2hvbGUgT0ZMIGZvbnQgKH4wLjLigJMwLjcgTUIgcGVyIGVkaXQgZmlsZSkuCkVuZ2luZSBwcm9jZXNzaW5nIGlzIG1haW4tdGhyZWFkOyBtdWx0aS1zZWNvbmQgc3RhbGxzIGFyZSBwb3NzaWJsZSBvbgpsYXJnZSBmaWxlcyBpbiBzbG93IGVudmlyb25tZW50cyDigJQgcGVyLXBhZ2UgdGltZW91dHMga2VlcCB0aGUgVUkKaG9uZXN0IHJhdGhlciB0aGFuIGZyb3plbi4KCiMjIDguIEdpdEh1YiDigJQgcmVwb3NpdG9yeSBjcmVhdGVkIGJ5IHRoZSBvd25lcjsgc291cmNlIHB1c2hlZCBhbmQgdmVyaWZpZWQKClRoZSBvd25lciBjcmVhdGVkICoqaHR0cHM6Ly9naXRodWIuY29tL0NoLWlzcmFyL3BkZi1lbmdpbmUtZWRpdG9yKioKKHB1YmxpYywgYnJhbmNoIGBtYWluYCkgb24gMjAyNi0xMC0xNi4gQ3JlYXRpbmcgaXQgdmlhIHRoZSBjb25uZWN0b3IKaGFkIGZhaWxlZCAoYDQwMyBSZXNvdXJjZSBub3QgYWNjZXNzaWJsZSBieSBpbnRlZ3JhdGlvbmAg4oCUIHRoZSBNdXNlCkdpdEh1YiBBcHAgY2Fubm90IGNyZWF0ZSByZXBvc2l0b3JpZXMpLCBidXQgd2l0aCB0aGUgcmVwb3NpdG9yeSBpbgpwbGFjZSB0aGUgY29ubmVjdG9yIGNvdWxkIHB1c2ggdG8gaXQuCgoqKlB1c2hlZCBhbmQgdmVyaWZpZWQ6KiogYWxsIDI1IHRleHQgZmlsZXMgKGFwcGxpY2F0aW9uIHNvdXJjZSwKdmVuZG9yZWQgZW5naW5lIHNvdXJjZSwgdGVzdHMsIFJFQURNRSwgdGhpcyByZXBvcnQncyBmaXJzdCB2ZXJzaW9uLApgcmVuZGVyLnlhbWxgLCBjb25maWdzKS4gVmVyaWZpY2F0aW9uIGlzIGJ5dGUtbGV2ZWw6IHRoZSByZW1vdGUgYmxvYgpTSEFzIHJldHVybmVkIGJ5IEdpdEh1YiBtYXRjaCB0aGUgbG9jYWwgZ2l0IGJsb2IgU0hBcyBleGFjdGx5CihzcG90LXZlcmlmaWVkIGZvciBgUkVBRE1FLm1kYCwgYHNyYy9BcHAudHN4YCwKYGVuZ2luZS9zcmMvcmVwbGFjZS50c2AsIGByZW5kZXIueWFtbGA7IHRoZSB0ZXh0IGNoYW5uZWwgaXMgZXhhY3QpLgoKKipOb3QgeWV0IHB1c2hlZCDigJQgMTkgZmlsZXMgdGhlIGNvbm5lY3RvciBjYW5ub3QgY2Fycnk6KiogdGhlCmNvbm5lY3RvcidzIHdyaXRlIHRvb2xzIHRyYW5zZmVyIHRleHQgb25seS4gVHdvIHByb2JlcyBwcm92ZWQgYmluYXJ5CmZpbGVzIGFyZSBjb3JydXB0ZWQgYnkgYm90aCBhdmFpbGFibGUgcm91dGVzIChiYXNlNjQgY29udGVudCBpcyBzdG9yZWQKdmVyYmF0aW0gYXMgdGV4dDsgcmF3IGNvbnRlbnQgaXMgVVRGLTgtZXhwYW5kZWQsIDEyOTMg4oaSIDE3MjIgYnl0ZXMgb24KdGhlIHByb2JlIFBERiksIGFuZCBgcGFja2FnZS1sb2NrLmpzb25gICgxNDMsNzY4IGJ5dGVzKSBleGNlZWRzIHRoZQpjb25uZWN0b3IgQ0xJJ3Mgc2luZ2xlLWFyZ3VtZW50IGxpbWl0LiBUaGUgY29ycnVwdCBwcm9iZSBmaWxlIHdhcwpkZWxldGVkIGZyb20gdGhlIHJlbW90ZSBpbW1lZGlhdGVseSAoY29tbWl0IGA3NDFjMGZlYCkuIFRoZSBtaXNzaW5nCmZpbGVzIGFyZSB0aGUgMTAgZmFsbGJhY2sgZm9udCBmaWxlcyB1bmRlciBgZW5naW5lL2Fzc2V0cy9gLCB0aGUgOApmaXh0dXJlIFBERnMgdW5kZXIgYHRlc3QvZml4dHVyZXMvYCwgYW5kIGBwYWNrYWdlLWxvY2suanNvbmAuCgoqKkV4YWN0IGNvbXBsZXRpb24gc3RlcHMgKG9uZSBwdXNoLCBmcm9tIGFueSBtYWNoaW5lIHdpdGggZ2l0KToqKgpgYGBzaApnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL0NoLWlzcmFyL3BkZi1lbmdpbmUtZWRpdG9yLmdpdApjZCBwZGYtZW5naW5lLWVkaXRvcgojIHVuemlwIHBkZi1lbmdpbmUtZWRpdG9yLW1pc3NpbmctZmlsZXMuemlwIChzdXBwbGllZCB3aXRoIHRoZQojIGhhbmQtb2ZmIG1lc3NhZ2UpIGludG8gdGhpcyBkaXJlY3Rvcnkg4oCUIHBhdGhzIGFyZSByZWxhdGl2ZQpnaXQgYWRkIC1BICYmIGdpdCBjb21taXQgLW0gIkFkZCBiaW5hcnkgYXNzZXRzOiBlbmdpbmUgZm9udHMsIHRlc3QgZml4dHVyZXMsIHBhY2thZ2UtbG9jayIKZ2l0IHB1c2gKYGBgClVudGlsIHRoYXQgcHVzaCBsYW5kcywgdGhlIHJlbW90ZSB0cmVlIGNhbm5vdCBidWlsZCB0aGUgZWRpdG9yCihgc2NyaXB0cy9zeW5jLWFzc2V0cy5tanNgIGNvcGllcyB0aGUgZW5naW5lIGZvbnRzIGF0IGJ1aWxkIHRpbWUpLgpUaGUgbG9jYWwgcmVwb3NpdG9yeSBpbiB0aGUgYnVpbGQgd29ya3NwYWNlIHJlbWFpbnMgdGhlIGNvbXBsZXRlCnJlZmVyZW5jZSBjb3B5IChjb21taXRzIGA5YThmNzQ1YCwgYGY4NjVhZGRgLCBhbmQgdGhlIHJlcG9ydC11cGRhdGUKY29tbWl0KS4KCiMjIDkuIFJlbmRlciDigJQgcGVuZGluZyB0aGUgR2l0SHViIHJlcG9zaXRvcnksIGV4YWN0IHN0ZXBzCgpObyBSZW5kZXIgQVBJIGtleSBpcyBjb25maWd1cmVkIGluIHRoaXMgZW52aXJvbm1lbnQsIGFuZCB0aGUgc2VydmljZQptdXN0IGNvbm5lY3QgdG8gdGhlIG5ldyBHaXRIdWIgcmVwbyAod2hpY2ggZG9lcyBub3QgZXhpc3QgeWV0IOKAlCDCpzgpLgpUaGUgcmVwbyBjYXJyaWVzIGByZW5kZXIueWFtbGAsIHNvIHNldHVwIGlzOgoKMS4gUmVuZGVyIGRhc2hib2FyZCDihpIgKipOZXcg4oaSIFN0YXRpYyBTaXRlKiogKG9yICoqQmx1ZXByaW50KiopIOKGkgogICBjb25uZWN0ICoqQ2gtaXNyYXIvcGRmLWVuZ2luZS1lZGl0b3IqKi4KMi4gTmFtZTogKipwZGYtZW5naW5lLWVkaXRvcioqICh5aWVsZHMKICAgYGh0dHBzOi8vcGRmLWVuZ2luZS1lZGl0b3Iub25yZW5kZXIuY29tYCBpZiB0aGUgc3ViZG9tYWluIGlzIGZyZWUpLgozLiBCdWlsZCBjb21tYW5kOiBgbnBtIGluc3RhbGwgJiYgbnBtIHJ1biBidWlsZGA7IFB1Ymxpc2ggZGlyZWN0b3J5OgogICBgZGlzdGA7IHRoZSBTUEEgcmV3cml0ZSBpcyBhbHJlYWR5IGRlY2xhcmVkIGluIGByZW5kZXIueWFtbGAKICAgKGAvKiDihpIgL2luZGV4Lmh0bWxgKS4gTm8gZW52aXJvbm1lbnQgdmFyaWFibGVzLCBubyBiYWNrZW5kLgo0LiBDcmVhdGUgdGhlIHNlcnZpY2UsIHdhaXQgZm9yIHRoZSBmaXJzdCBkZXBsb3kgdG8gZmluaXNoLCB0aGVuIG9wZW4KICAgdGhlIFVSTCBhbmQgcnVuIHRoZSBzYW1lIGZsb3cgYXMgdGhlIEUyRSAob3BlbiB3cml0ZXIucGRmIGZyb20KICAgYHRlc3QvZml4dHVyZXMvYCwgZWRpdCBCUk9XTiDihpIgUkVELCBkb3dubG9hZCkgYmVmb3JlIGNhbGxpbmcgaXQgbGl2ZS4KCkRlcGxveW1lbnQgaXMgKipub3QqKiBjbGFpbWVkOiBubyBzZXJ2aWNlIHdhcyBjcmVhdGVkIGFuZCBubyBwdWJsaWMgVVJMCmV4aXN0cyB5ZXQuCgojIyAxMC4gQ29uZmlybWF0aW9ucwoKLSBQcm9kdWN0aW9uIFBERkVESTogdW50b3VjaGVkIChjbGVhbiBAIGAyYzAyZDRkYCkuCi0gUmVzZWFyY2ggd2Vic2l0ZS9sYWI6IHVudG91Y2hlZC4KLSBTdGFuZGFsb25lIGVuZ2luZTogYnl0ZS1pZGVudGljYWwgdG8gdGhlIHByZS13b3JrIHNuYXBzaG90OyBiYXNlbGluZQogIGdyZWVuIGJlZm9yZSBhbmQgYWZ0ZXIuCi0gQXJhYmljL1VyZHUgZWRpdGluZzogbm90IGVuYWJsZWQ7IHRoZSBzY3JpcHQgZ2F0ZSBpcyBpbnRhY3QgYW5kCiAgRTJFLXZlcmlmaWVkIGluIHRoZSBzaGlwcGVkIFVJLgotIE5vdGhpbmcgaW4gdGhpcyBwcm9qZWN0IHdhcyBkZXBsb3llZCBhbnl3aGVyZS4KCiMjIDkuIFBvc3QtZGVwbG95bWVudCByZWNvcmQgKyByZXNldC1zZW1hbnRpY3MgZml4ICgyMDI2LTEwLTE2KQoKLSBHaXRIdWI6IENoLWlzcmFyL3BkZi1lbmdpbmUtZWRpdG9yIGNyZWF0ZWQgYnkgdGhlIG93bmVyIChwdWJsaWMpOyB0aGUgMjUKICB0ZXh0IGZpbGVzIHdlcmUgcHVzaGVkIHZpYSB0aGUgR2l0SHViIGNvbm5lY3RvciBhbmQgYmxvYi12ZXJpZmllZC4gVGhlCiAgY29ubmVjdG9yIGNhbm5vdCB0cmFuc2ZlciBiaW5hcmllcyBieXRlLWV4YWN0IChwcm9iZWQgYm90aCB3cml0ZSB0b29scyksCiAgc28gdGhlIHJlbWFpbmluZyAxOSBmaWxlcyAoMTAgZW5naW5lIGZvbnRzLCA4IGZpeHR1cmUgUERGcywKICBwYWNrYWdlLWxvY2suanNvbikgd2VyZSB1cGxvYWRlZCB0aHJvdWdoIEdpdEh1YidzIHdlYiBVSSBpbiB0aHJlZSBjb21taXRzCiAgKDUxODlhZTQsIGMyMDM2NDAsIDEwMWM5OGEpIGFuZCBibG9iLVNIQS12ZXJpZmllZCAxOS8xOSBhZ2FpbnN0IHRoZSBsb2NhbAogIHRyZWUuIFRoZSByZXBvc2l0b3J5IGlzIGNvbXBsZXRlOiA0NC80NCB0cmFja2VkIGZpbGVzLgotIFJlbmRlcjogU3RhdGljIFNpdGUgInBkZi1lbmdpbmUtZWRpdG9yIiAoc3J2LWRiOHZmYm5hdnI0YzczY2duNG8wKSwKICBHaXRIdWItcHJvdmlkZXIgY29ubmVjdGlvbiwgYXV0by1kZXBsb3kgb24uIFRoZSBmaXJzdCBkZXBsb3kgZmFpbGVkIHdpdGgKICB0aGUgZXhwZWN0ZWQgRU5PRU5UIG9uIGVuZ2luZS9hc3NldHMgKGZvbnRzIG5vdCB5ZXQgcHJlc2VudCk7IHRoZSBkZXBsb3kKICB0cmlnZ2VyZWQgYnkgdGhlIGNvbXBsZXRpb24gY29tbWl0cyBzdWNjZWVkZWQuIExpdmU6CiAgaHR0cHM6Ly9wZGYtZW5naW5lLWVkaXRvci5vbnJlbmRlci5jb20KLSBMaXZlIGZ1bmN0aW9uYWwgdGVzdCAocmVhbCBicm93c2VyLCB3cml0ZXIucGRmKTogbG9hZCAoemVybyBjb25zb2xlCiAgZXJyb3JzKSwgb3BlbiwgbWFwcGluZyAzMCBlZGl0YWJsZSAvIDE5IG5vdC1zYWZlbHktZWRpdGFibGUsIEJST1dO4oaSUkVECiAgdmlhIGZhbGxiYWNrLWZvbnQsIGV4cG9ydGVkLWNvcHkgcHJldmlldyBzaG93aW5nIFJFRCDigJQgNi83IHN0ZXBzIHBhc3NlZC4KICBTdGVwIDcgZXhwb3NlZCBhIGRlZmVjdCB0aGUgbG9jYWwgRTJFIGhhZCBub3QgY292ZXJlZDogYWZ0ZXIgIk9wZW4KICBleHBvcnRlZCBjb3B5IiwgdGhlIGV4cG9ydGVkIGRvY3VtZW50IGJlY2FtZSB0aGUgc2Vzc2lvbidzICJvcmlnaW5hbCIsCiAgc28gIlJlc2V0IHRvIG9yaWdpbmFsIiByZXBvcnRlZCBzdWNjZXNzIHdoaWxlIHN0YXlpbmcgb24gdGhlIGVkaXRlZAogIGV4cG9ydDsgdGhlIGZpcnN0LW9wZW5lZCBmaWxlIHdhcyB1bnJlY292ZXJhYmxlIGluLXNlc3Npb24uCi0gRml4IChzcmMvQXBwLnRzeCk6IHRoZSBzZXNzaW9uIG5vdyBwaW5zIG9yaWdpbmFsTmFtZS9vcmlnaW5hbEJ5dGVzIGF0CiAgb3BlbiB0aW1lOyByZW9wZW5FeHBvcnRlZCBubyBsb25nZXIgb3ZlcndyaXRlcyB0aGVtOyBSZXNldCByZXN0b3JlcyB0aGUKICBwaW5uZWQgZmlsZSAobmFtZSBpbmNsdWRlZCkgYW5kIGJvdGggYWN0aW9ucycgc3RhdHVzIG1lc3NhZ2VzIG5hbWUgdGhlCiAgZmlsZSBSZXNldCByZXR1cm5zIHRvLiB0ZXN0L2UyZS5janMgZ2FpbmVkIHRoZSBleGFjdCBsaXZlLWZvdW5kIHNlcXVlbmNlCiAgYXMgcmVncmVzc2lvbiBzdGVwcyAoZWRpdCDihpIgb3BlbiBleHBvcnRlZCBjb3B5IOKGkiByZXNldCBtdXN0IHJlc3RvcmUKICB3cml0ZXIucGRmIHdpdGggQlJPV04pLiBTdWl0ZXMgYWZ0ZXIgdGhlIGZpeDogaW50ZWdyYXRpb24gMzQvMzQsCiAgRTJFIDE4LzE4ICsgaW5kZXBlbmRlbnQgZXhwb3J0IHZlcmlmaWNhdGlvbiwgemVybyBjb25zb2xlIGVycm9ycy4KLSBBY2Nlc3NpYmlsaXR5IGZvbGxvdy11cCAoMjAyNi0xMC0xNiwgb3duZXItYXBwcm92ZWQpOiB0aGUgZmlsZSBpbnB1dAogIHVzZWQgdGhlIGBoaWRkZW5gIGF0dHJpYnV0ZSwgd2hpY2ggcmVtb3ZlcyBpdCBmcm9tIHRoZSBhY2Nlc3NpYmlsaXR5CiAgdHJlZSBlbnRpcmVseSAoYW5kIGJsb2NrZWQgYXV0b21hdGVkIGxpdmUtYnJvd3NlciB2ZXJpZmljYXRpb24gb2YgdGhlCiAgcmVzZXQgZml4KS4gSXQgbm93IHVzZXMgYSBzdGFuZGFyZCBgLnZpc3VhbGx5LWhpZGRlbmAgY2xhc3Mgd2l0aCBhbgogIGFyaWEtbGFiZWwg4oCUIHBpeGVsLWlkZW50aWNhbCBVSSwgYnV0IGEgcmVhbCBmb2N1c2FibGUgY29udHJvbCBmb3IKICBrZXlib2FyZC9hc3Npc3RpdmUtdGVjaG5vbG9neSB1c2VycyAoc3JjL0FwcC50c3gsIHNyYy9zdHlsZXMuY3NzKS4K
+# PDF Engine Editor — Build Report (2026-10-16)
+
+## 1. Project and isolation
+
+- **New project:** `~/workspace/pdf-engine-editor/` — a new, isolated
+  directory with its own Git repository (local commit `9a8f745`, branch
+  `main`). It was NOT created inside any existing repository.
+- **Standalone engine (upstream, untouched):** `~/workspace/engine-poc/`.
+  A pre-work snapshot (SHA-256 manifest + file copies) was taken at
+  `engine-poc/snapshots/phase9-editor/`; after all work, **every engine
+  source and asset file is byte-identical to the snapshot**.
+- **Production PDFEDI (untouched):** `~/workspace/pdfedi/` — verified
+  clean at `2c02d4d` before and after; never modified, deployed, or
+  pushed to.
+- **Research lab (untouched):** `~/workspace/engine-poc/lab/` — read
+  only (its proven browser configuration was replicated, not modified).
+- The new app vendors a snapshot of the engine under `engine/`
+  (provenance: `engine/ENGINE-NOTICE.md`). The standalone engine remains
+  the upstream.
+- No production secrets, environment files, API keys, or user data were
+  copied. The production bundle was scanned: no machine paths, tokens,
+  or credential-shaped strings.
+
+## 2. Browser-compatibility evidence (Phase 1)
+
+- The engine core is environment-agnostic: its only Node dependency is a
+  dynamic `node:fs` import behind `configureEngine()` host injection
+  points (`engine/src/replace.ts`), unreachable once a browser host
+  configures font loading. pdf-lib 1.17.1 is pure JavaScript; fontkit
+  2.0.4 runs in browsers; fallback fonts are static assets.
+- Prior proof existed (the research lab ran this engine fully
+  client-side in Chromium), and this project **re-proved it end-to-end**
+  with its own build and browser tests (§5).
+- Baseline engine suite before any work (from `engine-poc/`):
+  `npx tsc --noEmit`, `npx tsx test/run-poc.ts` (8/8),
+  `python test/verify.py` (25/25), `npx tsx test/run-realworld.ts` (13),
+  `python test/verify-rw.py` (50/50), `npx tsx test/run-fragments.ts`
+  (29/29), `python test/verify-fragments.py` (150/150),
+  `npx tsx test/run-audit-probes.ts` (18/18),
+  `python test/verify-audit-probes.py` (11/11) — **all exit 0**.
+
+## 3. Architecture and dependency/license decisions
+
+- React 18 + TypeScript + Vite 6 (static site; no backend).
+- PDF.js (pdfjs-dist 4.10.38, Apache-2.0) for rendering + text layer.
+  Worker, standard fonts, and CMaps are copied from the installed
+  package at build time (`scripts/sync-assets.mjs`) and served
+  same-origin.
+- Engine access only through `src/engine-adapter.ts`, configured for
+  the browser exactly as validated: fallback fonts fetched from the
+  app's own assets, pdf-lib driven by fontkit2, fallback fonts embedded
+  whole (pdf-lib's subset embedder cannot use fontkit 2.x; editing
+  decisions identical, outputs larger).
+- Dependencies: pdf-lib (MIT), fontkit 1.8.1 + fontkit2 = fontkit
+  2.0.4 (MIT), pdfjs-dist (Apache-2.0), react/react-dom (MIT),
+  vite + plugin-react (MIT), tsx/typescript (dev). Fallback fonts:
+  Liberation (SIL OFL 1.1), DejaVu (permissive).
+- **Selection mapping** (`src/selection-map.ts`): PDF.js splits runs
+  into word/space items, so a run maps to a consecutive sequence of
+  viewer items, accepted only when the concatenation equals the run
+  text exactly, the first item's origin matches the run's recorded
+  origin (≤2.5 pt), consecutive items are contiguous along the run's
+  baseline (≤1.5 pt per joint), and the segmentation is unique.
+  Selections spanning two runs, ambiguous mappings, and stale fragment
+  offsets are refused with reasons. On writer.pdf, 30 of 49 runs map;
+  the rest (producer-split runs that fail exact reproduction) are
+  listed in the UI as not safely editable.
+
+## 4. Files created
+
+The whole `pdf-engine-editor/` tree: `package.json`, `tsconfig.json`,
+`vite.config.ts`, `index.html`, `render.yaml`, `README.md`,
+`.gitignore`, `scripts/sync-assets.mjs`, `src/` (`main.tsx`, `App.tsx`,
+`styles.css`, `engine-adapter.ts`, `selection-map.ts`), `engine/`
+(vendored snapshot + notice + fonts), `test/` (8 synthetic fixtures,
+`integration.mts`, `e2e.cjs`, `verify-export.mts`), this report.
+Generated and git-ignored: `node_modules/`, `dist/`, `public/assets/*`
+(regenerated by the build), `test/out/`.
+
+## 5. Tests and results
+
+**Integration suite** — `npx tsx test/integration.mts`: **34/34, exit 0.**
+Covers: Tj whole-run (same-font); TJ whole-run; subset-font fallback;
+hybrid fragment (French); /Rotate 90 whole-run; rotated-text fragment;
+multi-page edit with page isolation; `'` operator refusals (both APIs,
+exact reasons); Arabic replacement refusal + input-bytes integrity +
+valid edit after a refusal; width-less font hybrid refusal
+(`fragment-widths-unavailable`); scanned document (zero runs,
+`target-not-found`); longer replacement with the engine's no-reflow
+width report; selection mapping on real PDF.js items (exact, sequence,
+ambiguity-by-duplication, stale-fragment rejection, cross-item ranges);
+fixture files byte-identical after the run.
+
+**Browser E2E** — `node test/e2e.cjs` (production build served to real
+headless Chromium over CDP Fetch interception at a synthetic origin;
+the sandbox blocks loopback): **14/14, exit 0**, plus independent
+export verification (`test/verify-export.mts`: exported PDF re-parsed
+by the engine — 3 pages, RED present, BROWN absent, French text
+intact). Flow proven: boot → upload writer.pdf → runs map → select the
+BROWN run in the rendered text layer → apply RED (fallback-font) →
+download (bytes captured) → preview shows RED → reset restores the
+original → Arabic replacement refuses with
+`script-not-supported-in-this-phase` and the document is unchanged →
+**zero console errors** and **no network requests outside the app
+origin** (all observed requests were same-origin asset loads).
+
+**Defects found and fixed during this build** (all in the new app's
+code; the engine itself was never modified):
+1. React vs imperative DOM conflict — the pages container is now a
+   React-childless host element (the empty state is a sibling overlay).
+2. A hung `pdf.js` document `destroy()` (or page render promise — a
+   known headless-Chromium behaviour) could stall document loading
+   forever: destroys and per-page renders/text layers now race with
+   timeouts and degrade honestly (affected pages report why their text
+   is unselectable instead of freezing the app).
+3. A selection race: the browser's asynchronous `selectionchange`
+   could re-deliver the same selection after the user typed a
+   replacement and silently reset the replacement text to the original
+   (caught by byte-level inspection of an E2E export: the fallback
+   block had redrawn the original word). Re-deliveries for an unchanged
+   selection no longer touch the replacement box; the key resets when a
+   new document state loads.
+
+**Post-integration engine baseline:** the full 9-command suite was
+re-run in `engine-poc/` after all work — **all exit 0**, identical
+results to the pre-work run.
+
+**Clean-environment check:** `rm -rf node_modules dist && npm install
+&& npm run build` — passes (typecheck clean; the only build warning is
+chunk size: pdf.js + fontkit make the main JS ~1.35 MB / ~0.5 MB gzip,
+a known cost of a fully local editor).
+
+## 6. Supported and refused operations
+
+Supported: whole-run replacement (same-font and fallback paths),
+single-run fragment replacement (same-font, hybrid, fallback),
+rotated pages/text, multi-page documents, Latin-script text incl.
+French diacritics. Refused (engine reasons surfaced verbatim):
+Arabic/Urdu/CJK replacements (script gate, preserved), `'`/`"`
+operators, unmappable fonts, width-less-font hybrids, Tz≠100 hybrids,
+boundaries inside multi-char glyph codes, scanned pages (no runs),
+cross-run or ambiguous selections, files over 50 MB (browser memory
+guard). No OCR, no rasterization shortcut, no cloud processing.
+
+## 7. Performance and memory limitations
+
+Initial load downloads ~0.5 MB (gzipped) of JS once; each page renders
+at the chosen zoom with all pages in the DOM (suited to small/medium
+documents; very long documents will use proportionally more memory).
+Fallback-path edits embed a whole OFL font (~0.2–0.7 MB per edit file).
+Engine processing is main-thread; multi-second stalls are possible on
+large files in slow environments — per-page timeouts keep the UI
+honest rather than frozen.
+
+## 8. GitHub — repository created by the owner; source pushed and verified
+
+The owner created **https://github.com/Ch-israr/pdf-engine-editor**
+(public, branch `main`) on 2026-10-16. Creating it via the connector
+had failed (`403 Resource not accessible by integration` — the Muse
+GitHub App cannot create repositories), but with the repository in
+place the connector could push to it.
+
+**Pushed and verified:** all 25 text files (application source,
+vendored engine source, tests, README, this report's first version,
+`render.yaml`, configs). Verification is byte-level: the remote blob
+SHAs returned by GitHub match the local git blob SHAs exactly
+(spot-verified for `README.md`, `src/App.tsx`,
+`engine/src/replace.ts`, `render.yaml`; the text channel is exact).
+
+**Not yet pushed — 19 files the connector cannot carry:** the
+connector's write tools transfer text only. Two probes proved binary
+files are corrupted by both available routes (base64 content is stored
+verbatim as text; raw content is UTF-8-expanded, 1293 → 1722 bytes on
+the probe PDF), and `package-lock.json` (143,768 bytes) exceeds the
+connector CLI's single-argument limit. The corrupt probe file was
+deleted from the remote immediately (commit `741c0fe`). The missing
+files are the 10 fallback font files under `engine/assets/`, the 8
+fixture PDFs under `test/fixtures/`, and `package-lock.json`.
+
+**Exact completion steps (one push, from any machine with git):**
+```sh
+git clone https://github.com/Ch-israr/pdf-engine-editor.git
+cd pdf-engine-editor
+# unzip pdf-engine-editor-missing-files.zip (supplied with the
+# hand-off message) into this directory — paths are relative
+git add -A && git commit -m "Add binary assets: engine fonts, test fixtures, package-lock"
+git push
+```
+Until that push lands, the remote tree cannot build the editor
+(`scripts/sync-assets.mjs` copies the engine fonts at build time).
+The local repository in the build workspace remains the complete
+reference copy (commits `9a8f745`, `f865add`, and the report-update
+commit).
+
+## 9. Render — pending the GitHub repository, exact steps
+
+No Render API key is configured in this environment, and the service
+must connect to the new GitHub repo (which does not exist yet — §8).
+The repo carries `render.yaml`, so setup is:
+
+1. Render dashboard → **New → Static Site** (or **Blueprint**) →
+   connect **Ch-israr/pdf-engine-editor**.
+2. Name: **pdf-engine-editor** (yields
+   `https://pdf-engine-editor.onrender.com` if the subdomain is free).
+3. Build command: `npm install && npm run build`; Publish directory:
+   `dist`; the SPA rewrite is already declared in `render.yaml`
+   (`/* → /index.html`). No environment variables, no backend.
+4. Create the service, wait for the first deploy to finish, then open
+   the URL and run the same flow as the E2E (open writer.pdf from
+   `test/fixtures/`, edit BROWN → RED, download) before calling it live.
+
+Deployment is **not** claimed: no service was created and no public URL
+exists yet.
+
+## 10. Confirmations
+
+- Production PDFEDI: untouched (clean @ `2c02d4d`).
+- Research website/lab: untouched.
+- Standalone engine: byte-identical to the pre-work snapshot; baseline
+  green before and after.
+- Arabic/Urdu editing: not enabled; the script gate is intact and
+  E2E-verified in the shipped UI.
+- Nothing in this project was deployed anywhere.
+
+## 9. Post-deployment record + reset-semantics fix (2026-10-16)
+
+- GitHub: Ch-israr/pdf-engine-editor created by the owner (public); the 25
+  text files were pushed via the GitHub connector and blob-verified. The
+  connector cannot transfer binaries byte-exact (probed both write tools),
+  so the remaining 19 files (10 engine fonts, 8 fixture PDFs,
+  package-lock.json) were uploaded through GitHub's web UI in three commits
+  (5189ae4, c203640, 101c98a) and blob-SHA-verified 19/19 against the local
+  tree. The repository is complete: 44/44 tracked files.
+- Render: Static Site "pdf-engine-editor" (srv-db8vfbnavr4c73cgn4o0),
+  GitHub-provider connection, auto-deploy on. The first deploy failed with
+  the expected ENOENT on engine/assets (fonts not yet present); the deploy
+  triggered by the completion commits succeeded. Live:
+  https://pdf-engine-editor.onrender.com
+- Live functional test (real browser, writer.pdf): load (zero console
+  errors), open, mapping 30 editable / 19 not-safely-editable, BROWN→RED
+  via fallback-font, exported-copy preview showing RED — 6/7 steps passed.
+  Step 7 exposed a defect the local E2E had not covered: after "Open
+  exported copy", the exported document became the session's "original",
+  so "Reset to original" reported success while staying on the edited
+  export; the first-opened file was unrecoverable in-session.
+- Fix (src/App.tsx): the session now pins originalName/originalBytes at
+  open time; reopenExported no longer overwrites them; Reset restores the
+  pinned file (name included) and both actions' status messages name the
+  file Reset returns to. test/e2e.cjs gained the exact live-found sequence
+  as regression steps (edit → open exported copy → reset must restore
+  writer.pdf with BROWN). Suites after the fix: integration 34/34,
+  E2E 18/18 + independent export verification, zero console errors.
+- Accessibility follow-up (2026-10-16, owner-approved): the file input
+  used the `hidden` attribute, which removes it from the accessibility
+  tree entirely (and blocked automated live-browser verification of the
+  reset fix). It now uses a standard `.visually-hidden` class with an
+  aria-label — pixel-identical UI, but a real focusable control for
+  keyboard/assistive-technology users (src/App.tsx, src/styles.css).
