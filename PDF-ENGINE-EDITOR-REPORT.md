@@ -256,3 +256,21 @@ exists yet.
   reset fix). It now uses a standard `.visually-hidden` class with an
   aria-label — pixel-identical UI, but a real focusable control for
   keyboard/assistive-technology users (src/App.tsx, src/styles.css).
+- Corruption incident + repair (2026-10-16, later the same day): the two
+  fix commits above were first pushed through the GitHub connector's
+  push_files, which stored the base64 payloads AS the file contents —
+  App.tsx, styles.css, test/e2e.cjs and this report landed on GitHub as
+  base64 text, and both Render builds failed on the garbage (the live
+  site kept serving the last good build, 101c98a). Read-backs through the
+  same connector echoed the pushed payloads and masked the corruption;
+  it was caught by the failed-build logs and proven by downloading the
+  raw files from GitHub directly. Repair: the 4 files were re-uploaded
+  through GitHub's web UI (commits 9a51869, 18eaae2, a793981), after
+  which ALL 44 tracked files were verified byte-identical via the
+  independent raw-download channel. The auto-deploy of the repaired tree
+  succeeded, and the live functional test then passed 5/5 steps,
+  including the verbatim new messages ("Reset to original" still returns
+  to writer.pdf / "Reset to writer.pdf — the file you opened first") with
+  BROWN restored after opening the exported copy. Lesson recorded: never
+  verify connector-written files through the connector itself — always
+  confirm via an independent channel.
