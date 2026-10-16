@@ -318,7 +318,7 @@ export default function App() {
         <div className="brand">PDF Engine Editor</div>
         <label className="open-btn">
           Open PDF
-          <input type="file" accept="application/pdf,.pdf" hidden onChange={(e) => {
+          <input type="file" accept="application/pdf,.pdf" className="visually-hidden" aria-label="Open a PDF file" onChange={(e) => {
             const f = e.target.files?.[0];
             if (f) void openFile(f);
             e.target.value = '';

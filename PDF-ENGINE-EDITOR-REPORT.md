@@ -250,3 +250,9 @@ exists yet.
   as regression steps (edit → open exported copy → reset must restore
   writer.pdf with BROWN). Suites after the fix: integration 34/34,
   E2E 18/18 + independent export verification, zero console errors.
+- Accessibility follow-up (2026-10-16, owner-approved): the file input
+  used the `hidden` attribute, which removes it from the accessibility
+  tree entirely (and blocked automated live-browser verification of the
+  reset fix). It now uses a standard `.visually-hidden` class with an
+  aria-label — pixel-identical UI, but a real focusable control for
+  keyboard/assistive-technology users (src/App.tsx, src/styles.css).

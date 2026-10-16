@@ -6,6 +6,12 @@ html, body { margin: 0; padding: 0; font-family: "Segoe UI", system-ui, -apple-s
 .brand { font-weight: 700; font-size: 17px; letter-spacing: .2px; }
 .open-btn { background: #2563eb; color: #fff; padding: 7px 14px; border-radius: 6px; cursor: pointer; font-size: 14px; }
 .open-btn:hover { background: #1d4fc4; }
+/* Visually hidden but present in the accessibility tree (unlike
+   display:none / the hidden attribute, which remove the element from it
+   entirely). Used for the file input inside the Open PDF label so
+   keyboard and assistive-technology users get a real, focusable control
+   while the UI stays pixel-identical. */
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); border: 0; white-space: nowrap; }
 .file-name { color: #b9bec7; font-size: 13px; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .spacer { flex: 1; }
 .pager { display: flex; align-items: center; gap: 8px; font-size: 13px; }
